@@ -7,6 +7,7 @@ class Player {
 private:
   Vector coords;
   list::Vector corners;
+
 public:
   Player ();
   ~Player ();
