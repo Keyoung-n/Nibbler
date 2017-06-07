@@ -18,7 +18,7 @@ public:
   void eat(Vector);
   int up();
   int down(Vector Mapsize);
-  int left(Vector Mapsize);
+  int left();
   int right(Vector Mapsize);
 };
 #endif
