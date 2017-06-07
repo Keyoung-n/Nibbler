@@ -11,10 +11,10 @@ EXE = SDL_Lesson0
 
 all: $(EXE)
 
-$(EXE): main.o
+$(EXE): sdllib.o
 	$(CXX) $< $(LDFLAGS) -o $@
 
-main.o: main.cpp
+main.o: sdllib.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
