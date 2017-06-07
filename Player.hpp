@@ -17,8 +17,8 @@ public:
   ~Player ();
   void eat(Vector);
   int up();
-  int down(Vector Mapsize);
+  int down(Vector);
   int left();
-  int right(Vector Mapsize);
+  int right(Vector);
 };
 #endif
