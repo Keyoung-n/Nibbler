@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 
 
-class Sdllib {
+class Sdllib : public Ilib {
 	public:
 		SDL_Window	*win;
 		SDL_Renderer	*ren;

@@ -1,4 +1,6 @@
 CC = clang++
+MACFLAGS = -dynamiclib -flat_namespace
+LINUXFLAGS = -fPIC -shared
 SDL_LIB = -L/usr/local/lib -lSDL2 -Wl,-rpath=/usr/local/lib
 SDL_INCLUDE = -I/usr/local/include
 FLAGS = -Wall -Wextra -Werror -std=c++11 $(SDL_INCLUDE)

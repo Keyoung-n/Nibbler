@@ -12,7 +12,8 @@ OBJ = $(SRC:.cpp=.o)
 $(NAME): all
 
 all:
-	@$(CC) $(FLAGS) -o lib1 $(SRC) $(LIBFLAGS)
+	@$(CC) $(FLAGS) -fPIC -shared ILib.cpp sdllib.cpp -o lib1.so
+	@$(CC) $(FLAGS) -o main $(SRC) -ldl $(LIBFLAGS)
 
 .PHONY: clean
 
