@@ -1,11 +1,22 @@
 #include "Draw.hpp"
 
 Draw::Draw() {
-  void *handle;
-
-  handle = dlopen ("/lib/libm.so.6", RTLD_LAZY);
-    if (!handle) {
-       // fputs (dlerror(), stderr);
-        //exit(1);
-    }
+  handle = dlopen ("./Ncurses/libfoo.so", RTLD_GLOBAL);
+  if (!handle) {
+    fputs (dlerror(), stderr);
+    exit(1);
   }
+
+  str = (void (*)(void))dlsym(handle, "foo");
+  if ((error = dlerror()) != NULL)  {
+    fputs(error, stderr);
+    exit(1);
+  }
+
+  str();
+  dlclose(handle);
+}
+
+Draw::~Draw() {
+
+}
