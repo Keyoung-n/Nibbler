@@ -33,7 +33,11 @@ bool Player::did_player_eat_apple(std::list<Vector> apples, Vector head_pos) {
 }
 
 void Player::moveTail() {
-	Vector last_corner = corners.back();
+	Vector last_corner;
+	if (!corners.empty())
+		last_corner = corners.back();
+	else
+		last_corner = head;
 	if (last_corner.y < tail.y)
 		tail.y += 1;
 	else if (last_corner.y > tail.y)
@@ -44,6 +48,27 @@ void Player::moveTail() {
 		tail.x += 1;
 	if ((tail.x == last_corner.x) && (tail.y == last_corner.y))
 		corners.pop_back();
+}
+
+bool Player::moveHead(Vector Mapsize) {
+	Vector first_corner;
+	if (!corners.empty())
+		first_corner = corners.front();
+	else
+		first_corner = tail;
+	if (first_corner.y < head.y)
+		head.y -= 1;
+	else if (first_corner.y > head.y)
+		head.y += 1;
+	else if (first_corner.x < head.x)
+		head.x += 1;
+	else if (first_corner.x > head.x)
+		head.x -= 1;
+	if (head.y < 0 && head.y > Mapsize.y && head.x < 0 && head.x > Mapsize.x)
+		return (true);
+	if (did_player_eat_itself(head))
+		return (true);
+	return false;
 }
 
 void Player::eat(Vector pos) {

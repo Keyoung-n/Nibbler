@@ -1,5 +1,5 @@
-#ifndef Player_H
-#define Player_H
+#ifndef Player_HPP
+#define Player_HPP
 
 #include "vector.h"
 #include "Apples.hpp"
@@ -11,12 +11,14 @@ private:
   Vector head, tail;
   std::list<Vector> corners;
   int length;
-  void moveTail();
+
 
 public:
   Player ();
   ~Player ();
+  void moveTail();
   void eat(Vector);
+  bool moveHead(Vector);
   bool up(std::list<Vector>);
   bool down(std::list<Vector>, Vector);
   bool left(std::list<Vector>);

@@ -1,8 +1,8 @@
 #ifndef Game_HPP
 #define Game_HPP
-#include "Draw.hpp"
+// #include "Draw.hpp"
 #include "Player.hpp"
-#include "Food.hpp"
+#include "Apples.hpp"
 #include <ctime>
 #include <iostream>
 #include <sys/time.h>
@@ -12,6 +12,9 @@
 class Game {
 private:
   int score;
+  Apples food;
+  Player snake;
+
 public:
   Game ( void );
   Game ( Game const & copy );
