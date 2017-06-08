@@ -4,6 +4,7 @@
 #include "vector.h"
 #include "Apples.hpp"
 #include <list>
+#include <iterator>
 
 class Player {
 private:
@@ -16,9 +17,12 @@ public:
   Player ();
   ~Player ();
   void eat(Vector);
-  int up();
-  int down(Vector);
-  int left();
-  int right(Vector);
+  bool up(std::list<Vector>);
+  bool down(std::list<Vector>, Vector);
+  bool left(std::list<Vector>);
+  bool right(std::list<Vector>, Vector);
+  bool did_player_eat_itself(Vector);
+  bool did_player_eat_apple(std::list<Vector>, Vector);
 };
+
 #endif
