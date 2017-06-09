@@ -27,3 +27,7 @@ void Apples::eatApple(Vector eaten_apple) {
     }
 	}
 }
+
+std::list<Vector> Apples::getlistofApples() {
+	return apples;
+}

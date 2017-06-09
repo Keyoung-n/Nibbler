@@ -1,10 +1,14 @@
 #include "Player.hpp"
 
 Player::Player() {
+	tail.x = 0;
+	tail.y = 0;
+	head.x = 4;
+	head.y = 0;
+	length = 4;
 }
 
-Player::~Player() {
-}
+Player::~Player() {}
 
 bool Player::did_player_eat_itself(Vector head_pos) {
 	Vector next;
@@ -70,7 +74,7 @@ bool Player::moveHead(Vector Mapsize) {
 		head.x += 1;
 	else if (first_corner.x > head.x)
 		head.x -= 1;
-	if (head.y < 0 && head.y > Mapsize.y && head.x < 0 && head.x > Mapsize.x)
+	if (head.y < 0 || head.y > Mapsize.y || head.x < 0 || head.x > Mapsize.x)
 		return (true);
 	if (did_player_eat_itself(head))
 		return (true);
@@ -82,7 +86,7 @@ void Player::eat(Vector pos) {
 	head = pos;
 }
 
-bool Player::up(std::list<Vector> apples) {
+bool Player::up() {
 	Vector new_head_pos;
 	new_head_pos.x = head.x;
 	new_head_pos.y = head.y - 1;
@@ -94,14 +98,10 @@ bool Player::up(std::list<Vector> apples) {
 	if (head.y != new_head_pos.y)
 		corners.push_back(head);
 	head = new_head_pos;
-	if (did_player_eat_apple(apples, head))
-		eat(head);
-	else
-		moveTail();
 	return (false);
 }
 
-bool Player::left(std::list<Vector> apples) {
+bool Player::left() {
 	Vector new_head_pos;
 	new_head_pos.x = head.x - 1;
 	new_head_pos.y = head.y;
@@ -113,14 +113,10 @@ bool Player::left(std::list<Vector> apples) {
 	if (head.x != new_head_pos.x)
 		corners.push_back(head);
 	head = new_head_pos;
-	if (did_player_eat_apple(apples, head))
-		eat(head);
-	else
-		moveTail();
 	return (false);
 }
 
-bool Player::down(std::list<Vector> apples, Vector Mapsize) {
+bool Player::down(Vector Mapsize) {
 	Vector new_head_pos;
 	new_head_pos.x = head.x;
 	new_head_pos.y = head.y + 1;
@@ -132,14 +128,10 @@ bool Player::down(std::list<Vector> apples, Vector Mapsize) {
 	if (head.y != new_head_pos.y)
 		corners.push_back(head);
 	head = new_head_pos;
-	if (did_player_eat_apple(apples, head))
-		eat(head);
-	else
-		moveTail();
 	return (false);
 }
 
-bool Player::right(std::list<Vector> apples, Vector Mapsize) {
+bool Player::right(Vector Mapsize) {
 	Vector new_head_pos;
 	new_head_pos.x = head.x + 1;
 	new_head_pos.y = head.y;
@@ -151,9 +143,37 @@ bool Player::right(std::list<Vector> apples, Vector Mapsize) {
 	if (head.x != new_head_pos.x)
 		corners.push_back(head);
 	head = new_head_pos;
+	return (false);
+}
+
+bool Player::move(int direction, std::list<Vector> apples, Vector mapsize) {
+	switch (direction) {
+		case 1:
+			if (up())
+				return false;
+		break;
+		case 2:
+			if (down(mapsize))
+				return false;
+		break;
+		case 3:
+			if (left())
+				return false;
+		break;
+		case 4:
+			if (right(mapsize))
+				return false;
+		break;
+		default:
+			if (moveHead(mapsize))
+				return false;
+		break;
+	}
 	if (did_player_eat_apple(apples, head))
 		eat(head);
 	else
 		moveTail();
-	return (false);
+	std::cout << "head x:" << head.x << " y:" << head.y << '\n';
+	std::cout << "tail x:" << tail.x << " y:" << tail.y << '\n';
+	return true;
 }

@@ -6,25 +6,28 @@
 #include <list>
 #include <iterator>
 
+//tmp
+#include <iostream>
+
 class Player {
 private:
   Vector head, tail;
   std::list<Vector> corners;
   int length;
 
-
 public:
   Player ();
   ~Player ();
-  void moveTail();
-  void eat(Vector);
-  bool moveHead(Vector);
-  bool up(std::list<Vector>);
-  bool down(std::list<Vector>, Vector);
-  bool left(std::list<Vector>);
-  bool right(std::list<Vector>, Vector);
-  bool did_player_eat_itself(Vector);
   bool did_player_eat_apple(std::list<Vector>, Vector);
+  bool did_player_eat_itself(Vector);
+  bool down(Vector);
+  bool left();
+  bool move(int, std::list<Vector>, Vector);
+  bool moveHead(Vector);
+  bool right(Vector);
+  bool up();
+  void eat(Vector);
+  void moveTail();
 };
 
 #endif

@@ -13,28 +13,30 @@ Game::Game(Game const & copy) {
 	*this = copy;
 }
 
+Game::~Game ( void ) {
+	std::cout << "Your score was " << score << '\n';
+}
+
 void Game::play() {
 	score = 0;
 	int loop 	= 0;
 	struct timeval	start;
 	struct timeval	end;
+	bool player_alive = true;
 	//Draw Gui
-	while (1) {
+	while (player_alive) {
 		gettimeofday(&start, NULL);
 		// Draw Gui
+		std::cout << "drawing" << '\n';
 		// Check player's position
 		// if (loop % 100 == 0)
 					// Generate Food
-		std::cout << "drawing" << '\n';
+		player_alive = snake.move(0, food.getlistofApples(), mapsize);
 		loop++;
 		score++;
 		gettimeofday(&end, NULL);
 		usleep( 60000 - (end.tv_usec - start.tv_usec) );
 	}
-}
-
-Game::~Game ( void ) {
-	std::cout << "Your score was " << score << '\n';
 }
 
 int main(int argc, char *argv[]) {
