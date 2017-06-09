@@ -1,5 +1,11 @@
 #include "Player.hpp"
 
+Player::Player() {
+}
+
+Player::~Player() {
+}
+
 bool Player::did_player_eat_itself(Vector head_pos) {
 	Vector next;
 	Vector current;

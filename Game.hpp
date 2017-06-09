@@ -12,11 +12,13 @@
 class Game {
 private:
   int score;
+  Vector mapsize;
   Apples food;
   Player snake;
 
 public:
   Game ( void );
+  Game (int, int);
   Game ( Game const & copy );
  // Game & operator=( Game const & copy );
   ~Game ( void );

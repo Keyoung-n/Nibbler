@@ -4,6 +4,9 @@ Apples::Apples() {
 	seed = 0;
 }
 
+Apples::~Apples() {
+}
+
 void Apples::genApple(Vector Mapsize) {
 	Vector new_apple;
 
