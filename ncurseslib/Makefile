@@ -1,7 +1,7 @@
 CC = clang++
 FLAGS = -Wall -Wextra -Werror
 NAME = libncurses.so
-SRC = test.cpp
+SRC = ncurseslib.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all:

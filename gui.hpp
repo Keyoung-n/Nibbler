@@ -15,6 +15,6 @@ private:
 public:
   GUI();
   ~GUI();
-  int drawFrame(Vector);
+  int drawFrame(Vector, std::list<Vector>);
 };
 #endif

@@ -16,7 +16,7 @@ GUI::~GUI() {
   // dlclose(handle);
 }
 
-int GUI::drawFrame(Vector mapsize) {
-  lib->drawFrame(mapsize);
+int GUI::drawFrame(Vector mapsize, std::list<Vector> apples) {
+  lib->drawFrame(mapsize, apples);
   return (0);
 }

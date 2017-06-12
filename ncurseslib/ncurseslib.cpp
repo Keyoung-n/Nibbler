@@ -23,18 +23,20 @@ public:
     return (1);
   }
 
-  void drawFrame(Vector mapsize) {
-    int y = mapsize.y + 1;
-    int x = mapsize.x + 1;
+  void drawFrame(Vector mapsize, std::list<Vector> apples) {
+    int y = mapsize.y + 2;
+    int x = mapsize.x + 2;
     clear();
-    for (int i = 0; i < mapsize.x; i++) {
+    for (int i = 0; i != x + 1; i++) {
       mvprintw(0, i, "*");
       mvprintw(y, i, "*");
     }
-    for (int i = 0; i < mapsize.y; i++) {
+    for (int i = 0; i != y; i++) {
       mvprintw(i, 0, "*");
       mvprintw(i, x, "*");
     }
+    for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple)
+      mvprintw(apple->x + 1, apple->y + 1, "+");
     refresh();
   }
 };

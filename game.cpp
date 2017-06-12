@@ -27,11 +27,11 @@ void Game::play() {
 	while (player_alive) {
 		gettimeofday(&start, NULL);
 		// Draw Gui
-		interface.drawFrame(mapsize);
+		interface.drawFrame(mapsize, food.getlistofApples());
 		// Check player's position
-		// if (loop % 100 == 0)
-					// Generate Food
-		player_alive = snake.move(0, food.getlistofApples(), mapsize);
+		if (loop % 100 == 0)
+			food.genApple(mapsize);
+		// player_alive = snake.move(0, food.getlistofApples(), mapsize);
 		loop++;
 		score++;
 		gettimeofday(&end, NULL);
