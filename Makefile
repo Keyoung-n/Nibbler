@@ -2,7 +2,7 @@ CC = g++
 
 FLAGS = -Wall -Wextra -Werror -ldl
 
-NAME = Snake
+NAME = snake
 
 SRC = main.cpp game.cpp apples.cpp player.cpp gui.cpp
 
