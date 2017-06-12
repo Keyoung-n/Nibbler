@@ -1,4 +1,4 @@
-CC = clang++
+CC = g++
 FLAGS = -Wall -Wextra -Werror
 NAME = libncurses.so
 SRC = ncurseslib.cpp

@@ -12,11 +12,11 @@ GUI::GUI() {
 }
 
 GUI::~GUI() {
-  // destroy(lib);
-  // dlclose(handle);
+   destroy(lib);
+   dlclose(handle);
 }
 
-int GUI::drawFrame(Vector mapsize, std::list<Vector> apples) {
-  lib->drawFrame(mapsize, apples);
+int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords) {
+  lib->drawFrame(mapsize, apples, playerCords);
   return (0);
 }

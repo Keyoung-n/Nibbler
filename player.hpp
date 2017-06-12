@@ -6,9 +6,6 @@
 #include <list>
 #include <iterator>
 
-//tmp
-#include <iostream>
-
 class Player {
 private:
   Vector head, tail;
@@ -28,6 +25,7 @@ public:
   bool up();
   void eat(Vector);
   void moveTail();
+  std::list<Vector> getplayerCords();
 };
 
 #endif

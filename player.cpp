@@ -10,6 +10,13 @@ Player::Player() {
 
 Player::~Player() {}
 
+std::list<Vector> Player::getplayerCords() {
+	std::list<Vector> snake = corners;
+	snake.push_back(head);
+	snake.push_front(tail);
+	return snake;
+}
+
 bool Player::did_player_eat_itself(Vector head_pos) {
 	Vector next;
 	Vector current;
@@ -173,7 +180,5 @@ bool Player::move(int direction, std::list<Vector> apples, Vector mapsize) {
 		eat(head);
 	else
 		moveTail();
-//	std::cout << "head x:" << head.x << " y:" << head.y << '\n';
-//	std::cout << "tail x:" << tail.x << " y:" << tail.y << '\n';
 	return true;
 }
