@@ -173,7 +173,7 @@ bool Player::move(int direction, std::list<Vector> apples, Vector mapsize) {
 		eat(head);
 	else
 		moveTail();
-	std::cout << "head x:" << head.x << " y:" << head.y << '\n';
-	std::cout << "tail x:" << tail.x << " y:" << tail.y << '\n';
+//	std::cout << "head x:" << head.x << " y:" << head.y << '\n';
+//	std::cout << "tail x:" << tail.x << " y:" << tail.y << '\n';
 	return true;
 }

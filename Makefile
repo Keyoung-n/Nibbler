@@ -1,10 +1,10 @@
-CC = clang++
+CC = g++
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -ldl
 
 NAME = Snake
 
-SRC = main.cpp game.cpp apples.cpp player.cpp
+SRC = main.cpp game.cpp apples.cpp player.cpp gui.cpp
 
 $(NAME): all
 

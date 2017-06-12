@@ -27,7 +27,7 @@ void Game::play() {
 	while (player_alive) {
 		gettimeofday(&start, NULL);
 		// Draw Gui
-		std::cout << "drawing" << '\n';
+		interface.drawFrame(mapsize);
 		// Check player's position
 		// if (loop % 100 == 0)
 					// Generate Food

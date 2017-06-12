@@ -1,4 +1,4 @@
-#include "factory.hpp"
+#include "../factory.hpp"
 #include <dlfcn.h>
 
 //need to make this main use dlopen()
