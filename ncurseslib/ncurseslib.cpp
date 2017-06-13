@@ -33,23 +33,23 @@ public:
       if (next != snakePoints.end()) {
         if (next->x > point->x) {
           for (int x = point->x; x != next->x; x++)
-            mvprintw(point->y + 1, x + 1, "~");
+            mvprintw(point->y + 1, x + 1, "-");
         }
         else if (next->x < point->x) {
           for (int x = next->x; x < point->x; x++)
-            mvprintw(point->y + 1, x + 1, "~");
+            mvprintw(point->y + 1, x + 1, "-");
         }
         else if (next->y > point->y) {
           for (int y = point->y; y != next->y; y++)
-            mvprintw(y + 1, point->x + 1, "~");
+            mvprintw(y + 1, point->x + 1, "-");
         }
         else if (next->y < point->y) {
           for (int y = next->y; y < point->y; y++)
-            mvprintw(y + 1, point->x + 1, "~");
+            mvprintw(y + 1, point->x + 1, "-");
         }
       }
       else
-        mvprintw(point->y + 1, point->x + 1, ">");
+        mvprintw(point->y + 1, point->x + 1, "#");
     }
   }
 
@@ -67,7 +67,7 @@ public:
       mvprintw(i, x, "*");
     }
     for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple)
-      mvprintw(apple->x + 1, apple->y + 1, "$");
+      mvprintw(apple->y + 1, apple->x + 1, "$");
     printPlayer(playerCords);
     refresh();
   }

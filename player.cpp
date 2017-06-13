@@ -77,9 +77,9 @@ bool Player::moveHead(Vector Mapsize) {
 	else
 		first_corner = tail;
 	if (first_corner.y < head.y)
-		head.y -= 1;
-	else if (first_corner.y > head.y)
 		head.y += 1;
+	else if (first_corner.y > head.y)
+		head.y -= 1;
 	else if (first_corner.x < head.x)
 		head.x += 1;
 	else if (first_corner.x > head.x)

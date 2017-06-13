@@ -11,6 +11,7 @@ class Apples {
 private:
   std::list<Vector> apples;
   int seed;
+  int count;
 
 public:
   Apples ();

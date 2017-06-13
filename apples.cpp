@@ -2,6 +2,7 @@
 
 Apples::Apples() {
 	seed = 0;
+	count = 0;
 }
 
 Apples::~Apples() {
@@ -10,13 +11,16 @@ Apples::~Apples() {
 void Apples::genApple(Vector Mapsize) {
 	Vector new_apple;
 
-	seed += (unsigned)time(0);
-	srand(seed);
-	seed++;
-	new_apple.y = rand() % Mapsize.y;
-	new_apple.x = rand() % Mapsize.x;
+	if (count != 5) {
+		seed += (unsigned)time(0);
+		srand(seed);
+		seed++;
+		new_apple.y = (rand() % Mapsize.y);
+		new_apple.x = (rand() % Mapsize.x);
 
-	apples.push_back(new_apple);
+		apples.push_back(new_apple);
+		count++;
+	}
 }
 
 void Apples::eatApple(Vector eaten_apple) {
