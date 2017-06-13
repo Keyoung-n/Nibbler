@@ -19,15 +19,14 @@ Game::~Game ( void ) {
 
 void Game::play() {
 	score = 0;
-	int loop 	= 0;
-	struct timeval	start;
-	struct timeval	end;
 	bool player_alive = true;
-	//Draw Gui
+	int loop 	= 0;
+	struct timeval	end;
+	struct timeval	start;
+
 	while (player_alive) {
 		gettimeofday(&start, NULL);
-		// Draw Gui
-		 interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords());
+		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords());
 		// Check player's position
 		if (loop % 100 == 0)
 			food.genApple(mapsize);

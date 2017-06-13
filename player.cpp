@@ -3,7 +3,7 @@
 Player::Player() {
 	tail.x = 0;
 	tail.y = 0;
-	head.x = 3;
+	head.x = 4;
 	head.y = 0;
 	length = 4;
 }
@@ -59,9 +59,9 @@ void Player::moveTail() {
 	else
 		last_corner = head;
 	if (last_corner.y < tail.y)
-		tail.y += 1;
-	else if (last_corner.y > tail.y)
 		tail.y -= 1;
+	else if (last_corner.y > tail.y)
+		tail.y += 1;
 	else if (last_corner.x < tail.x)
 		tail.x -= 1;
 	else if (last_corner.x > tail.x)

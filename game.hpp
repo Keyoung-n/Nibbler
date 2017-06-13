@@ -13,10 +13,10 @@
 class Game {
 private:
   int score;
-  Vector mapsize;
   Apples food;
-  Player snake;
   GUI interface;
+  Player snake;
+  Vector mapsize;
 
 public:
   Game ( void );
