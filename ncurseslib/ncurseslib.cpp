@@ -11,17 +11,38 @@ private:
 public:
   ncurseslib () {
     initscr();
-  	noecho();
   	curs_set(FALSE);
   	keypad(stdscr, TRUE);
+  	noecho();
+    nodelay(stdscr, TRUE);
   }
 
   virtual ~ncurseslib () {
     endwin();
   }
 
-  int  playerMovment() {
-    return (1);
+  int  userResponse() {
+		int ch = getch();
+		if (ch != -1) {
+      switch(ch) {
+    		case KEY_UP:
+    			return (1);
+    			break;
+    		case KEY_DOWN:
+    			return (2);
+    			break;
+    		case KEY_LEFT:
+    			return (3);
+    			break;
+    		case KEY_RIGHT:
+    			return (4);
+    			break;
+    		case 27:
+    			return (-1);
+    			break;
+    	}
+    }
+    return (0);
   }
 
   void printPlayer(std::list<Vector> snakePoints) {

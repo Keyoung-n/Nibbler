@@ -5,6 +5,7 @@
 #include <dlfcn.h>
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 class GUI {
 private:
@@ -16,5 +17,6 @@ public:
   GUI();
   ~GUI();
   int drawFrame(Vector, std::list<Vector>, std::list<Vector>);
+  int getUserResponse();
 };
 #endif
