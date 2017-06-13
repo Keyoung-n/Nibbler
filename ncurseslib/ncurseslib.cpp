@@ -26,25 +26,37 @@ public:
   }
 
   void printPlayer(std::list<Vector> snakePoints) {
+    std::list<Vector>::iterator next;
     for (std::list<Vector>::iterator point = snakePoints.begin(); point != snakePoints.end(); ++point) {
-      Vector next = *(std::next(point, 1));
-      if (next.x > point->x) {
-        for (int i = point->x - 1; i < next.x; i++)
-          mvprintw(point->y + 1, i + 1, "-");
+      next = point;
+      next++;
+      if (next != snakePoints.end()) {
+        if (next->x > point->x) {
+          for (int x = point->x; x != next->x; x++)
+            mvprintw(point->y + 1, x + 1, "~");
+        }
+        else if (next->x < point->x) {
+          for (int x = next->x; x < point->x; x++)
+            mvprintw(point->y + 1, x + 1, "~");
+        }
+        else if (next->y > point->y) {
+          for (int y = point->y; y != next->y; y++)
+            mvprintw(y + 1, point->x + 1, "~");
+        }
+        else if (next->y < point->y) {
+          for (int y = next->y; y < point->y; y++)
+            mvprintw(y + 1, point->x + 1, "~");
+        }
       }
-      else if (next.x < point->x){
-        for (int i = next.x - 1; i < point->x ; i++)
-          mvprintw(point->y + 1, i + 1, "!");
-      }
-      if (point == snakePoints.end()) {
+      else
         mvprintw(point->y + 1, point->x + 1, ">");
-      }
     }
   }
 
   void drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords) {
-    int y = mapsize.y + 2;
+    int y = mapsize.y + 1;
     int x = mapsize.x + 2;
+
     clear();
     for (int i = 0; i != x + 1; i++) {
       mvprintw(0, i, "*");

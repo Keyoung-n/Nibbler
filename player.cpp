@@ -3,7 +3,7 @@
 Player::Player() {
 	tail.x = 0;
 	tail.y = 0;
-	head.x = 4;
+	head.x = 3;
 	head.y = 0;
 	length = 4;
 }
@@ -11,7 +11,10 @@ Player::Player() {
 Player::~Player() {}
 
 std::list<Vector> Player::getplayerCords() {
-	std::list<Vector> snake = corners;
+	std::list<Vector> snake;
+	if (!corners.empty()) {
+		snake = corners;
+	}
 	snake.push_back(head);
 	snake.push_front(tail);
 	return snake;
@@ -180,5 +183,7 @@ bool Player::move(int direction, std::list<Vector> apples, Vector mapsize) {
 		eat(head);
 	else
 		moveTail();
+	std::cout << "head x:" << head.x << " y:" << head.y << '\n';
+	std::cout << "tail x:" << tail.x << " y:" << tail.y << '\n';
 	return true;
 }

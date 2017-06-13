@@ -5,6 +5,7 @@
 #include "apples.hpp"
 #include <list>
 #include <iterator>
+#include <iostream>
 
 class Player {
 private:

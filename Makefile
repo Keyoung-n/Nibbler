@@ -13,3 +13,6 @@ all:
 
 clean:
 	@rm $(NAME)
+
+run: all
+	./$(NAME) 50 25
