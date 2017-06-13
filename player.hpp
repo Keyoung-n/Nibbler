@@ -2,11 +2,9 @@
 #define Player_HPP
 
 #include "vector.h"
-#include "Apples.hpp"
+#include "apples.hpp"
 #include <list>
 #include <iterator>
-
-//tmp
 #include <iostream>
 
 class Player {
@@ -28,6 +26,7 @@ public:
   bool up();
   void eat(Vector);
   void moveTail();
+  std::list<Vector> getplayerCords();
 };
 
 #endif

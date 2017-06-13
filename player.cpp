@@ -1,14 +1,24 @@
-#include "Player.hpp"
+#include "player.hpp"
 
 Player::Player() {
 	tail.x = 0;
 	tail.y = 0;
-	head.x = 4;
+	head.x = 3;
 	head.y = 0;
 	length = 4;
 }
 
 Player::~Player() {}
+
+std::list<Vector> Player::getplayerCords() {
+	std::list<Vector> snake;
+	if (!corners.empty()) {
+		snake = corners;
+	}
+	snake.push_back(head);
+	snake.push_front(tail);
+	return snake;
+}
 
 bool Player::did_player_eat_itself(Vector head_pos) {
 	Vector next;

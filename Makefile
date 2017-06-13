@@ -1,24 +1,18 @@
-CC = clang++
-MACFLAGS = -dynamiclib -flat_namespace
-LINUXFLAGS = -fPIC -shared
-SDL_LIB = -L/usr/local/lib -lSDL2 -Wl,-rpath=/usr/local/lib
-SDL_INCLUDE = -I/usr/local/include
-FLAGS = -Wall -Wextra -Werror -std=c++11 $(SDL_INCLUDE)
-LIBFLAGS = $(SDL_LIB)
-NAME = lib1
+CC = g++
 
-SRC = sdllib.cpp main.cpp
+FLAGS = -Wall -Wextra -Werror -ldl
 
-OBJ = $(SRC:.cpp=.o)
+NAME = snake
+
+SRC = main.cpp game.cpp apples.cpp player.cpp gui.cpp
 
 $(NAME): all
 
 all:
-	@$(CC) $(FLAGS) -o lib1 $(SRC) $(LIBFLAGS)
-
-.PHONY: clean
+	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 clean:
-	@rm $(OBJ)
 	@rm $(NAME)
 
+run: all
+	./$(NAME) 50 25

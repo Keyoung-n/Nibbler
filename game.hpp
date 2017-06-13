@@ -1,13 +1,14 @@
 #ifndef Game_HPP
 #define Game_HPP
-// #include "Draw.hpp"
-#include "Player.hpp"
-#include "Apples.hpp"
+
+#include "apples.hpp"
+#include "gui.hpp"
+#include "player.hpp"
 #include <ctime>
 #include <iostream>
+#include <string>
 #include <sys/time.h>
 #include <unistd.h>
-#include <string>
 
 class Game {
 private:
@@ -15,6 +16,7 @@ private:
   Vector mapsize;
   Apples food;
   Player snake;
+  GUI interface;
 
 public:
   Game ( void );

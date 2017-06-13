@@ -1,4 +1,4 @@
-#include "Apples.hpp"
+#include "apples.hpp"
 
 Apples::Apples() {
 	seed = 0;

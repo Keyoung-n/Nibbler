@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "game.hpp"
 
 Game::Game( void ) {
 
@@ -27,31 +27,15 @@ void Game::play() {
 	while (player_alive) {
 		gettimeofday(&start, NULL);
 		// Draw Gui
-		std::cout << "drawing" << '\n';
+		 interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords());
 		// Check player's position
-		// if (loop % 100 == 0)
-					// Generate Food
-		player_alive = snake.move(0, food.getlistofApples(), mapsize);
+		if (loop % 100 == 0)
+			food.genApple(mapsize);
+		if (loop % 25 == 0)
+		 	player_alive = snake.move(0, food.getlistofApples(), mapsize);
 		loop++;
 		score++;
 		gettimeofday(&end, NULL);
 		usleep( 60000 - (end.tv_usec - start.tv_usec) );
 	}
-}
-
-int main(int argc, char *argv[]) {
-	if (argc == 3) {
-		int x = atoi(argv[1]);
-		int y = atoi(argv[2]);
-		if (x != 0 && y != 0) {
-			Game current_game(x, y);
-			current_game.play();
-		}
-		else
-			std::cout << "Incorect Mapsize input" << '\n';
-	}
-	else {
-		std::cout << "Not enough arguments filled in. " << '\n';
-	}
-	return 0;
 }
