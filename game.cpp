@@ -25,7 +25,7 @@ void Game::play() {
 	while (player_alive) {
 		gettimeofday(&start, NULL);
 		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords());
-		player_alive = snake.move(interface.getUserResponse(snake.getplayerCords()), &food, mapsize);
+		player_alive = snake.move(interface.getUserResponse(), &food, mapsize);
 		if (score % 100 == 0 || food.Count() == 0)
 			food.genApple(mapsize);
 		score++;
