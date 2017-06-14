@@ -30,6 +30,7 @@ void Game::play() {
 			food.genApple(mapsize);
 		score++;
 		gettimeofday(&end, NULL);
-		usleep( 60000 - (end.tv_usec - start.tv_usec) );
+		if ((end.tv_usec - start.tv_usec) >= 0)
+			usleep( 60000 - (end.tv_usec - start.tv_usec) );
 	}
 }
