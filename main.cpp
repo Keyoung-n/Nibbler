@@ -1,15 +1,25 @@
 #include "game.hpp"
 
+bool checkMapSize(int x, int y) {
+	if (x < 10 || y < 10) {
+		std::cout << "Map too small" << '\n';
+		return false;
+	}
+	else if ( x > 150 || y > 50 ){
+		std::cout << "Map too big" << '\n';
+		return false;
+	}
+	return true;
+}
+
 int main(int argc, char *argv[]) {
 	if (argc == 3) {
 		int x = atoi(argv[1]);
 		int y = atoi(argv[2]);
-		if (x != 0 && y != 0) {
+		if (checkMapSize(x, y)) {
 			Game current_game(x, y);
 			current_game.play();
 		}
-		else
-			std::cout << "Incorect Mapsize input" << '\n';
 	}
 	else {
 		std::cout << "Not enough arguments filled in. " << '\n';
