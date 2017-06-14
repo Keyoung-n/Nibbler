@@ -3,9 +3,9 @@
 Player::Player() {
 	tail.x = 0;
 	tail.y = 0;
-	head.x = 3;
+	head.x = 2;
 	head.y = 0;
-	length = 4;
+	length = 3;
 	direction = 4;
 }
 
