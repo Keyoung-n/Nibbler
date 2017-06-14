@@ -29,5 +29,9 @@ int GUI::getUserResponse() {
     std::cout << "Bye :)" << '\n';
     exit(0);
   }
+  if (response > 4) {
+    switch_lib(response);
+    return 0;
+  }
   return response;
 }

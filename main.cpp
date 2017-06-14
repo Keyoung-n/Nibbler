@@ -21,8 +21,7 @@ int main(int argc, char *argv[]) {
 			current_game.play();
 		}
 	}
-	else {
+	else
 		std::cout << "Not enough arguments filled in. " << '\n';
-	}
 	return 0;
 }

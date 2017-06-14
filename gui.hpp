@@ -18,5 +18,6 @@ public:
   ~GUI();
   int drawFrame(Vector, std::list<Vector>, std::list<Vector>);
   int getUserResponse();
+  void switch_lib(int lib);
 };
 #endif

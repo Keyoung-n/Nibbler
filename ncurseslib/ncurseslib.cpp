@@ -37,6 +37,15 @@ public:
     		case KEY_RIGHT:
     			return (4);
     			break;
+        case 49:
+          return (5);
+        break;
+        case 50:
+          return (6);
+        break;
+        case 51:
+          return (7);
+        break;
     		case 27:
     			return (-1);
     			break;
