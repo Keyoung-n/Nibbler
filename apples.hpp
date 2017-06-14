@@ -18,6 +18,7 @@ public:
   ~Apples ();
   void genApple(Vector);
   void eatApple(Vector);
+  int Count();
   std::list<Vector> getlistofApples();
 };
 #endif

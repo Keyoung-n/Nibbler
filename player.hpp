@@ -1,18 +1,19 @@
 #ifndef Player_HPP
 #define Player_HPP
 
-#include "vector.h"
 #include "apples.hpp"
-#include <list>
-#include <iterator>
+#include "vector.h"
 #include <iostream>
+#include <iterator>
+#include <list>
 
 class Player {
 private:
   Vector head, tail;
   std::list<Vector> corners;
   int length;
-
+  int direction;
+  
 public:
   Player ();
   ~Player ();
@@ -20,7 +21,7 @@ public:
   bool did_player_eat_itself(Vector);
   bool down(Vector);
   bool left();
-  bool move(int, std::list<Vector>, Vector);
+  bool move(int, Apples*, Vector);
   bool moveHead(Vector);
   bool right(Vector);
   bool up();

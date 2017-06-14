@@ -50,6 +50,7 @@ public:
     for (std::list<Vector>::iterator point = snakePoints.begin(); point != snakePoints.end(); ++point) {
       next = point;
       next++;
+
       if (next != snakePoints.end()) {
         if (next->x > point->x) {
           for (int x = point->x; x != next->x; x++)

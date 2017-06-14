@@ -1,7 +1,6 @@
 #include "game.hpp"
 
 Game::Game( void ) {
-
 }
 
 Game::Game(int x, int y) {
@@ -20,18 +19,15 @@ Game::~Game ( void ) {
 void Game::play() {
 	score = 0;
 	bool player_alive = true;
-	int loop 	= 0;
 	struct timeval	end;
 	struct timeval	start;
 
 	while (player_alive) {
 		gettimeofday(&start, NULL);
 		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords());
-		// Check player's position
-		if (loop % 100 == 0)
+		player_alive = snake.move(interface.getUserResponse(snake.getplayerCords()), &food, mapsize);
+		if (score % 100 == 0 || food.Count() == 0)
 			food.genApple(mapsize);
-		player_alive = snake.move(interface.getUserResponse(), food.getlistofApples(), mapsize);
-		loop++;
 		score++;
 		gettimeofday(&end, NULL);
 		usleep( 60000 - (end.tv_usec - start.tv_usec) );
