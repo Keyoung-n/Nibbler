@@ -30,4 +30,8 @@
 *.exe
 *.out
 *.app
-snake 
+snake
+
+#Extra Files
+._.DS_Store
+.DS_Store
