@@ -21,6 +21,14 @@ int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> p
   return (0);
 }
 
+void GUI::switch_lib(int new_lib) {
+  destroy(lib);
+  dlclose(handle);
+  if (new_lib == 2)
+    std::cout << "this is impossible" << '\n';
+  exit(0);
+}
+
 int GUI::getUserResponse() {
   int response = lib->userResponse();
   if (response == -1) {
