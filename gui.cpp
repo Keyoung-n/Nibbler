@@ -1,7 +1,8 @@
 #include "gui.hpp"
 
 GUI::GUI() {
-  handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
+  //handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
+  handle = dlopen("./allegrolib/liballegro.so", RTLD_LAZY);
   if (dlerror() != NULL)  {
     std::cout << "Couldn't load libnurses. :'(" << '\n';
     exit(0);
