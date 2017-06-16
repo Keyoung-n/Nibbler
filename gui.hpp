@@ -16,7 +16,7 @@ private:
 public:
   GUI();
   ~GUI();
-  int drawFrame(Vector, std::list<Vector>, std::list<Vector>);
+  int drawFrame(Vector, std::list<Vector>, std::list<Vector>, int);
   int getUserResponse();
   void switch_lib(int);
 };

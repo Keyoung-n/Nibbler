@@ -11,6 +11,11 @@ private:
 public:
   ncurseslib () {
     initscr();
+	start_color();
+	init_pair(1, COLOR_BLACK, COLOR_RED);
+	init_pair(2, COLOR_BLACK, COLOR_GREEN);
+	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(4, COLOR_BLUE, COLOR_BLACK);
   	curs_set(FALSE);
   	keypad(stdscr, TRUE);
   	noecho();
@@ -55,6 +60,7 @@ public:
   }
 
   void printPlayer(std::list<Vector> snakePoints) {
+	attron(COLOR_PAIR(1));
     std::list<Vector>::iterator next;
     for (std::list<Vector>::iterator point = snakePoints.begin(); point != snakePoints.end(); ++point) {
       next = point;
@@ -63,41 +69,45 @@ public:
       if (next != snakePoints.end()) {
         if (next->x > point->x) {
           for (int x = point->x; x != next->x; x++)
-            mvprintw(point->y + 1, x + 1, "+");
+            mvaddch(point->y + 1, x + 1, ACS_CKBOARD);
         }
         else if (next->x < point->x) {
           for (int x = next->x; x != point->x; x++)
-            mvprintw(point->y + 1, x + 1, "+");
+            mvaddch(point->y + 1, x + 1, ACS_CKBOARD);
         }
         else if (next->y > point->y) {
-          for (int y = point->y; y != next->y; y++)
-            mvprintw(y + 1, point->x + 1, "+");
+          for (int y = point->y; y != next->y; y++) 
+			 mvaddch(y + 1, point->x + 1, ACS_CKBOARD);
         }
         else if (next->y < point->y) {
           for (int y = next->y; y != point->y; y++)
-            mvprintw(y + 1, point->x + 1, "+");
+            mvaddch(y + 1, point->x + 1, ACS_CKBOARD);
         }
       }
       else
-        mvprintw(point->y + 1, point->x + 1, "#");
+		attron(COLOR_PAIR(2));
+        mvaddch(point->y + 1, point->x + 1, ACS_CKBOARD);
     }
   }
 
-  void drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords) {
+  void drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score) {
     int y = mapsize.y + 2;
     int x = mapsize.x + 2;
 
     clear();
+	attron(COLOR_PAIR(4));
+	mvprintw(y + 1, 0, "score: %d", score);
     for (int i = 0; i != x + 1; i++) {
-      mvprintw(0, i, "*");
-      mvprintw(y, i, "*");
+      mvaddch(0, i, ACS_CKBOARD);
+      mvaddch(y, i, ACS_CKBOARD);
     }
     for (int i = 0; i != y; i++) {
-      mvprintw(i, 0, "*");
-      mvprintw(i, x, "*");
+      mvaddch(i, 0, ACS_CKBOARD);
+      mvaddch(i, x, ACS_CKBOARD);
     }
+	attron(COLOR_PAIR(3));
     for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple)
-      mvprintw(apple->y + 1, apple->x + 1, "$");
+      mvaddch(apple->y + 1, apple->x + 1, ACS_DIAMOND);
     printPlayer(playerCords);
     refresh();
   }

@@ -16,8 +16,8 @@ GUI::~GUI() {
    dlclose(handle);
 }
 
-int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords) {
-  lib->drawFrame(mapsize, apples, playerCords);
+int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score) {
+  lib->drawFrame(mapsize, apples, playerCords, score);
   return (0);
 }
 
