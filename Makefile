@@ -9,7 +9,7 @@ SRC = main.cpp game.cpp apples.cpp player.cpp gui.cpp
 $(NAME): all
 
 all:
-	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
+	@$(CC) $(SRC) $(FLAGS) -o $(NAME) --std=c++11
 
 clean:
 	@rm $(NAME)

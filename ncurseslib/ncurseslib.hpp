@@ -13,6 +13,6 @@ public:
   virtual ~ncurseslib ();
   int userResponse();
   void printPlayer(std::list<Vector>);
-  void drawFrame(Vector, std::list<Vector>, std::list<Vector>);
+  void drawFrame(Vector, std::list<Vector>, std::list<Vector>, int);
 };
 #endif

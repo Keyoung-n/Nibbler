@@ -18,19 +18,20 @@ Game::~Game ( void ) {
 
 void Game::play() {
 	score = 0;
+	int	speed = 100000;
 	bool player_alive = true;
 	struct timeval	end;
 	struct timeval	start;
 
 	while (player_alive) {
 		gettimeofday(&start, NULL);
-		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords());
+		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords(), score);
 		player_alive = snake.move(interface.getUserResponse(), &food, mapsize);
 		if (score % 100 == 0 || food.Count() == 0)
 			food.genApple(mapsize);
 		score++;
 		gettimeofday(&end, NULL);
 		if ((end.tv_usec - start.tv_usec) >= 0)
-			usleep( 60000 - (end.tv_usec - start.tv_usec) );
+			usleep( speed - (end.tv_usec - start.tv_usec) );
 	}
 }

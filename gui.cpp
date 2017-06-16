@@ -1,8 +1,8 @@
 #include "gui.hpp"
 
 GUI::GUI() {
-  //handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
-  handle = dlopen("./allegrolib/liballegro.so", RTLD_LAZY);
+  handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
+  //handle = dlopen("./allegrolib/liballegro.so", RTLD_LAZY);
   if (dlerror() != NULL)  {
     std::cout << "Couldn't load libnurses. :'(" << '\n';
     exit(0);
@@ -17,8 +17,8 @@ GUI::~GUI() {
    dlclose(handle);
 }
 
-int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords) {
-  lib->drawFrame(mapsize, apples, playerCords);
+int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score) {
+  lib->drawFrame(mapsize, apples, playerCords, score);
   return (0);
 }
 
