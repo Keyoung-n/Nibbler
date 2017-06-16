@@ -14,6 +14,15 @@ allegrolib::allegrolib() {
     std::cout << "failed to create display!\n";
     exit(0);
   }
+  if(!al_install_keyboard()) {
+   std::cout << "failed to initialize the keyboard!\n";
+   exit(0);
+  }
+  event_queue = al_create_event_queue();
+  if (!event_queue) {
+    std::cout << "Failed to create event queue";
+    exit(0);
+  }
   scale = 10;
 }
 
@@ -23,6 +32,32 @@ allegrolib::~allegrolib() {
 }
 
 int allegrolib::userResponse() {
+  ALLEGRO_EVENT event;
+  al_wait_for_event(event_queue, &event);
+
+  if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+    switch(event.keyboard.keycode) {
+      case ALLEGRO_KEY_UP:
+        return (1);
+        break;
+
+      case ALLEGRO_KEY_DOWN:
+        return (2);
+        break;
+
+      case ALLEGRO_KEY_LEFT:
+        return (3);
+        break;
+
+      case ALLEGRO_KEY_RIGHT:
+        return (3);
+        break;
+
+      case ALLEGRO_KEY_ESCAPE:
+        return (-1);
+        break;
+    }
+  }
   return (0);
 }
 

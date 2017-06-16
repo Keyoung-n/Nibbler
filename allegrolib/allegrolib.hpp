@@ -12,7 +12,9 @@
 class allegrolib: public DynamicGUI {
 private:
   ALLEGRO_DISPLAY *display;
+  ALLEGRO_EVENT_QUEUE* event_queue;
   float scale;
+  
 public:
   allegrolib();
   allegrolib(int, int);
