@@ -18,7 +18,7 @@ Game::~Game ( void ) {
 
 void Game::play() {
 	score = 0;
-	int	speed = 100000;
+	int	speed = 60000;
 	bool player_alive = true;
 	struct timeval	end;
 	struct timeval	start;

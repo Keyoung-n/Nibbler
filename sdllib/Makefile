@@ -1,21 +1,26 @@
-CC = clang++
+CC = g++
 MACFLAGS = -dynamiclib -flat_namespace
 LINUXFLAGS = -fPIC -shared
-SDL_LIB = -L/usr/local/lib -lSDL2 -Wl,-rpath=/usr/local/lib
-SDL_INCLUDE = -I/usr/local/include
-FLAGS = -Wall -Wextra -Werror -std=c++11 $(SDL_INCLUDE)
+GDB = -ggdb
+SDL_LIB = $(shell sdl2-config --libs)
+SDL_INCLUDE = $(shell sdl2-config --cflags)
+FLAGS = -Wall -Wextra -Werror -std=c++11
 LIBFLAGS = $(SDL_LIB)
-NAME = lib1
+NAME = lib1.so
 
-SRC = sdllib.cpp main.cpp
+SRC = sdllib.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 $(NAME): all
 
 all:
-	@$(CC) $(FLAGS) -fPIC -shared ILib.cpp sdllib.cpp -o lib1.so
-	@$(CC) $(FLAGS) -o main $(SRC) -ldl $(LIBFLAGS)
+	@$(CC) $(GDB) $(FLAGS) -c -fPIC $(SRC)
+	@$(CC) -shared -fPIC -o $(NAME) $(OBJ) $(SDL_INCLUDE) $(SDL_LIB)
+
+link:
+	@echo $(SDL_LIB)
+	@echo $(SDL_INCLUDE)
 
 .PHONY: clean
 

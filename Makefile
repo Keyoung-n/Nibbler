@@ -1,6 +1,8 @@
-CC = g++
+CC = clang++
 
 FLAGS = -Wall -Wextra -Werror -ldl
+
+GDB = -ggdb
 
 NAME = snake
 
@@ -9,10 +11,10 @@ SRC = main.cpp game.cpp apples.cpp player.cpp gui.cpp
 $(NAME): all
 
 all:
-	@$(CC) $(SRC) $(FLAGS) -o $(NAME) --std=c++11
+	@$(CC) $(GDB) $(SRC) $(FLAGS) -o $(NAME) --std=c++11
 
 clean:
 	@rm $(NAME)
 
 run: all
-	./$(NAME) 50 25
+	./$(NAME) 320 240
