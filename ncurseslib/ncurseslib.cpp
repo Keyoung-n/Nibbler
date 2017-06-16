@@ -68,25 +68,42 @@ public:
 
       if (next != snakePoints.end()) {
         if (next->x > point->x) {
-          for (int x = point->x; x != next->x; x++)
-            mvaddch(point->y + 1, x + 1, ACS_CKBOARD);
+			for (int x = point->x; x != next->x; x++)
+			{
+            	mvaddch(point->y + 1, x + 1, ACS_CKBOARD);
+            	mvaddch(point->y + 1, x + 2, ACS_CKBOARD);
+            	mvaddch(point->y + 1, x + 3, ACS_CKBOARD);
+			}
         }
         else if (next->x < point->x) {
-          for (int x = next->x; x != point->x; x++)
-            mvaddch(point->y + 1, x + 1, ACS_CKBOARD);
+			for (int x = next->x; x != point->x; x++)
+            {
+				mvaddch(point->y + 1, x + 1, ACS_CKBOARD);
+				mvaddch(point->y + 1, x + 2, ACS_CKBOARD);
+				mvaddch(point->y + 1, x + 3, ACS_CKBOARD);
+			}
         }
         else if (next->y > point->y) {
-          for (int y = point->y; y != next->y; y++) 
-			 mvaddch(y + 1, point->x + 1, ACS_CKBOARD);
+   			for (int y = point->y; y != next->y; y++) 
+			{
+				 mvaddch(y + 2, point->x + 1, ACS_CKBOARD);
+				 mvaddch(y + 2, point->x + 2, ACS_CKBOARD);
+			}
         }
         else if (next->y < point->y) {
-          for (int y = next->y; y != point->y; y++)
-            mvaddch(y + 1, point->x + 1, ACS_CKBOARD);
+          	for (int y = next->y; y != point->y; y++)
+			{
+            	mvaddch(y + 1, point->x + 1, ACS_CKBOARD);
+            	mvaddch(y + 1, point->x + 2, ACS_CKBOARD);
+			}
         }
       }
-      else
+      else {
 		attron(COLOR_PAIR(2));
         mvaddch(point->y + 1, point->x + 1, ACS_CKBOARD);
+        mvaddch(point->y + 1, point->x + 2, ACS_CKBOARD);
+	  }
+
     }
   }
 
