@@ -89,10 +89,12 @@ void allegrolib::printPlayer(std::list<Vector> snakePoints) {
   }
 }
 
-void allegrolib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords) {
+void allegrolib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score) {
   int y = (mapsize.y + 2)* scale;
   int x = (mapsize.x + 2) * scale;
 
+  if (score % 10 == 0)
+    score = 10;
   al_clear_to_color(al_map_rgb(0,0,0));
   al_draw_rectangle(0, 0, x, y, al_map_rgb(255, 255, 255), 5);
   for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple)

@@ -14,13 +14,13 @@ private:
   ALLEGRO_DISPLAY *display;
   ALLEGRO_EVENT_QUEUE* event_queue;
   float scale;
-  
+
 public:
   allegrolib();
   allegrolib(int, int);
   virtual ~allegrolib();
   int userResponse();
-  void drawFrame(Vector, std::list<Vector>, std::list<Vector>);
+  void drawFrame(Vector, std::list<Vector>, std::list<Vector>, int);
   void printPlayer(std::list<Vector>);
 };
 #endif

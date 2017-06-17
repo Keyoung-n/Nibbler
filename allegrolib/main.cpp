@@ -62,22 +62,27 @@ void shutdown(void)
 void game_loop(void)
 {
     bool redraw = true;
-    al_start_timer(timer);
-
+    //al_start_timer(timer);
+    int x = 0;
+    int y = 0;
     while (!done) {
         ALLEGRO_EVENT event;
         al_wait_for_event(event_queue, &event);
 
         if (event.type == ALLEGRO_EVENT_TIMER) {
             redraw = true;
-            //update_logic();
+            al_clear_to_color(al_map_rgb(0, 0, 0));
+            al_draw_rectangle(x, y, x + 5, y + 5, al_map_rgb(255,0, 255), 5);
+            al_flip_display();
+            x++;
+            y++;
         }
         else if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
                 done = true;
             }
             al_clear_to_color(al_map_rgb(0, 0, 0));
-            al_draw_rectangle(0, 0, 5, 5, al_map_rgb(255, 255, 255), 5);
+            al_draw_rectangle(x, y, x + 5, y + 5, al_map_rgb(255, 255, 255), 5);
             al_flip_display();
         }
 
