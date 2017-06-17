@@ -6,7 +6,6 @@
 
 class DynamicGUI {
 public:
-   // pure virtual function providing interface framework.
    virtual int  userResponse() = 0;
    virtual void drawFrame(Vector, std::list<Vector>, std::list<Vector>, int) = 0;
 };
