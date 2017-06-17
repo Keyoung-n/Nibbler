@@ -35,6 +35,27 @@ void GUI::switch_lib(int new_lib) {
 		destroy = (void (*)(DynamicGUI*))dlsym(handle, "destroy_gl");
 		lib = create();
 	}
+	else if (new_lib == 6) {
+		handle = dlopen("./allegrolib/liballegro.so", RTLD_LAZY);
+		if (dlerror() != NULL) {
+			std::cout << "Could not load allegro lib. :(" << std::endl;
+			exit(0);
+		}
+		create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
+		destroy = (void (*)(DynamicGUI*))dlsym(handle, "destroy_gl");
+		lib = create();
+	}
+	else if (new_lib == 7) {
+		handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
+		if (dlerror() != NULL) {
+			std::cout << "Could not load ncurses lib. :(" << std::endl;
+			exit(0);
+		}
+		create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
+		destroy = (void (*)(DynamicGUI*))dlsym(handle, "destroy_gl");
+		lib = create();
+	}
+
 	else {
 		std::cout << "Error: Segmentation Fault (core Dumped)" << std::endl;
 		std::cout << "SIKE NIGGA!! invalid keypress, that's all" << std::endl;

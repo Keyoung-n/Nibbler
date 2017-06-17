@@ -59,9 +59,6 @@ int allegrolib::userResponse() {
      case ALLEGRO_KEY_ESCAPE:
        return (-1);
        break;
-	 case 49:
-		return (5);
-		break;
    }
   }
   return (0);
