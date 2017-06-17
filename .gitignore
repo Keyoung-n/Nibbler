@@ -35,4 +35,5 @@ snake
 #Extra Files
 ._.DS_Store
 .DS_Store
-.swp
+*.swp
+*.swo
