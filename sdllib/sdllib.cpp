@@ -25,7 +25,7 @@ int	Sdllib::init_sdl()
 
 int	Sdllib::userResponse()
 {
-		while (SDL_PollEvent(&event) != -1) {
+		while (SDL_PollEvent(&event) != 0) {
 			switch(event.type) {
 				case SDL_QUIT:
 				Destroy(win, ren);
@@ -54,6 +54,19 @@ int	Sdllib::userResponse()
 						Destroy(win, ren);
 						return (-1);
 						break;
+ 
+						case 49:
+						return (5);
+						break;
+
+						case 50:
+						return (6);
+						break;
+	
+						case 51:
+						return (7);
+						break;
+
 				}
 				break;
 			}
@@ -113,14 +126,15 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 }
 
 void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int) {
+		mapsize.y = 320;
+		mapsize.x = 240;
 		int y = mapsize.y;
 		int x = mapsize.x;
 		SDL_Rect	food_rec;
 		SDL_Rect	frame_rec;
-		frame_rec.h = 5;
-		frame_rec.w = 5;
+		frame_rec.h = 1;
+		frame_rec.w = 1;
 
-		SDL_SetRenderDrawColor(ren, 0, 0, 255, 0);
 		RenderClear(ren);
 		for (int i = 0; i != x + 1; i++) {
 				frame_rec.y = 0;
@@ -139,13 +153,14 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 				SDL_RenderFillRect(ren, &frame_rec);
 		}
 		for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple) {
-				food_rec.h = 5;
-				food_rec.w = 5;
+				food_rec.h = 20;
+				food_rec.w = 20;
 				food_rec.y = apple->y + 1;
 				food_rec.x = apple->x + 1;
-				SDL_SetRenderDrawColor(ren, 255, 100, 0, 255);
+		//		SDL_SetRenderDrawColor(ren, 255, 100, 50, 255);
 				SDL_RenderFillRect(ren, &food_rec);
 		}
+		//SDL_SetRenderDrawColor(ren, 100, 150, 70, 255);
 		printPlayer(playerCords);
 		RenderPresent(ren);
 }

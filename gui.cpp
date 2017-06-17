@@ -1,9 +1,9 @@
 #include "gui.hpp"
 
 GUI::GUI() {
-  handle = dlopen("./sdllib/lib1.so", RTLD_LAZY);
+  handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
   if (dlerror() != NULL)  {
-    std::cout << "Couldn't load libnurses. :'(" << '\n';
+    std::cout << "Couldn't load sdl lib. :'(" << '\n';
     exit(0);
   }
   create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
@@ -24,18 +24,21 @@ int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> p
 void GUI::switch_lib(int new_lib) {
   	destroy(lib);
   	dlclose(handle);
-  	if (new_lib == 2) {
+  	if (new_lib == 5) {
 		handle = dlopen("./sdllib/lib1.so", RTLD_LAZY);
 		if (dlerror() != NULL) {
-			std::cout << "Could not load sdllib. :(" << std::endl;
+			std::cout << "Could not load ncurseslib. :(" << std::endl;
 			exit(0);
 		}
 		create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
 		destroy = (void (*)(DynamicGUI*))dlsym(handle, "destroy_gl");
 		lib = create();
 	}
-	
-  exit(0);
+	else {
+		std::cout << "Error: Segmentation Fault (core Dumped)" << std::endl;
+		std::cout << "SIKE NIGGA!! invalid keypress, that's all" << std::endl;
+		exit(0);
+	}
 }
 
 int GUI::getUserResponse() {

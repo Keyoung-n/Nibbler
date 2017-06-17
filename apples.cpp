@@ -26,10 +26,10 @@ void Apples::genApple(Vector Mapsize) {
 void Apples::eatApple(Vector eaten_apple) {
   for (std::list<Vector>::iterator current = apples.begin(); current != apples.end() ; ++current) {
 		if (current->x == eaten_apple.x && current->y == eaten_apple.y) {
-      apples.erase(current);
+      		apples.erase(current);
 			count--;
-      return ;
-    }
+      		return ;
+    	}
 	}
 }
 
