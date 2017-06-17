@@ -126,8 +126,8 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 }
 
 void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int) {
-		int y = (mapsize.y + 2) * 10;
-		int x = (mapsize.x + 2) * 10;
+		int y = ((mapsize.y + 2) << 3) + ((mapsize.y + 2) << 1);
+		int x = ((mapsize.x + 2) << 3) + ((mapsize.x + 2) << 1);
 		SDL_Rect	food_rec;
 		SDL_Rect	frame_rec;
 		frame_rec.h = 1;
@@ -153,12 +153,10 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 		for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple) {
 				food_rec.h = 10;
 				food_rec.w = 10;
-				food_rec.y = (apple->y + 1) * 10;
-				food_rec.x = (apple->x + 1) * 10;
-		//		SDL_SetRenderDrawColor(ren, 255, 100, 50, 255);
+				food_rec.y = ((apple->y + 1) << 3) + ((apple->y + 1) << 1);
+				food_rec.x = ((apple->x + 1) << 3) + ((apple->x + 1) << 1);
 				SDL_RenderFillRect(ren, &food_rec);
 		}
-		//SDL_SetRenderDrawColor(ren, 100, 150, 70, 255);
 		printPlayer(playerCords);
 		RenderPresent(ren);
 }
