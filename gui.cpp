@@ -1,8 +1,7 @@
 #include "gui.hpp"
 
 GUI::GUI() {
-  //handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
-  handle = dlopen("./allegrolib/liballegro.so", RTLD_LAZY);
+  handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
   if (dlerror() != NULL)  {
     std::cout << "Couldn't load ncurses lib. :'(" << '\n';
     exit(0);
@@ -28,7 +27,7 @@ void GUI::switch_lib(int new_lib) {
   	if (new_lib == 5) {
 		handle = dlopen("./sdllib/lib1.so", RTLD_LAZY);
 		if (dlerror() != NULL) {
-			std::cout << "Could not load ncurseslib. :(" << std::endl;
+			std::cout << "Could not load SDLlib. :(" << std::endl;
 			exit(0);
 		}
 		create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
