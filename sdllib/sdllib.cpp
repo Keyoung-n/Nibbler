@@ -86,39 +86,39 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 						if (next->x > point->x) {
 								for (int x = point->x; x != next->x; x++)
 								{
-										r.y = point->y + 1;
-										r.x = x + 1;
+										r.y = ((point->y + 1) << 3) + ((point->y + 1) << 1);
+										r.x = ((x + 1) << 3) + ((x + 1) << 1);
 										SDL_RenderFillRect(ren, &r);
 								}
 						}
 						else if (next->x < point->x) {
 								for (int x = next->x; x != point->x; x++)
 								{
-										r.y = point->y + 1;
-										r.x = x + 1;
+										r.y = ((point->y + 1) << 3) + ((point->y + 1) << 1);
+										r.x = ((x + 1) << 3) + ((x + 1) << 1);
 										SDL_RenderFillRect(ren, &r);
 								}
 						}
 						else if (next->y > point->y) {
 								for (int y = point->y; y != next->y; y++) 
 								{
-										r.y = y + 2;
-										r.x = point->x + 1;
+										r.y = ((y + 2) << 3) + ((y + 2) << 1);
+										r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
 										SDL_RenderFillRect(ren, &r);
 								}
 						}
 						else if (next->y < point->y) {
 								for (int y = next->y; y != point->y; y++)
 								{
-										r.y = y + 1;
-										r.x = point->x + 1;
+										r.y = ((y + 1) << 3) + ((y + 1) << 1);
+										r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
 										SDL_RenderFillRect(ren, &r);
 								}
 						}
 				}
 				else {
-						r.y = point->y + 1;
-						r.x = point->x + 1;
+						r.y = ((point->y + 1) << 3) + ((point->y + 1) << 1);
+						r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
 						SDL_RenderFillRect(ren, &r);
 				}
 
@@ -126,10 +126,8 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 }
 
 void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int) {
-		mapsize.y = 320;
-		mapsize.x = 240;
-		int y = mapsize.y;
-		int x = mapsize.x;
+		int y = (mapsize.y + 2) * 10;
+		int x = (mapsize.x + 2) * 10;
 		SDL_Rect	food_rec;
 		SDL_Rect	frame_rec;
 		frame_rec.h = 1;
@@ -153,10 +151,10 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 				SDL_RenderFillRect(ren, &frame_rec);
 		}
 		for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple) {
-				food_rec.h = 20;
-				food_rec.w = 20;
-				food_rec.y = apple->y + 1;
-				food_rec.x = apple->x + 1;
+				food_rec.h = 10;
+				food_rec.w = 10;
+				food_rec.y = (apple->y + 1) * 10;
+				food_rec.x = (apple->x + 1) * 10;
 		//		SDL_SetRenderDrawColor(ren, 255, 100, 50, 255);
 				SDL_RenderFillRect(ren, &food_rec);
 		}

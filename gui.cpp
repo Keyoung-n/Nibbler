@@ -2,7 +2,7 @@
 
 GUI::GUI() {
   //handle = dlopen("./ncurseslib/libncurses.so", RTLD_LAZY);
-  handle = dlopen("./allegrolib/liballegro.so", RTLD_LAZY);
+  handle = dlopen("./sdllib/lib1.so", RTLD_LAZY);
   if (dlerror() != NULL)  {
     std::cout << "Couldn't load sdl lib. :'(" << '\n';
     exit(0);

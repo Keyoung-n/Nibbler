@@ -59,6 +59,9 @@ int allegrolib::userResponse() {
      case ALLEGRO_KEY_ESCAPE:
        return (-1);
        break;
+	 case 49:
+		return (5);
+		break;
    }
   }
   return (0);
@@ -93,7 +96,7 @@ void allegrolib::printPlayer(std::list<Vector> snakePoints) {
 }
 
 void allegrolib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score) {
-  int y = (mapsize.y + 2)* scale;
+  int y = (mapsize.y + 2) * scale;
   int x = (mapsize.x + 2) * scale;
 
   if (score % 10 == 0)
