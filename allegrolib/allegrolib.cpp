@@ -23,6 +23,7 @@ allegrolib::allegrolib() {
     std::cout << "Failed to create event queue";
     exit(0);
   }
+  al_register_event_source(event_queue, al_get_keyboard_event_source());
   scale = 10;
 }
 
@@ -33,30 +34,32 @@ allegrolib::~allegrolib() {
 
 int allegrolib::userResponse() {
   ALLEGRO_EVENT event;
-  al_wait_for_event(event_queue, &event);
+  bool trueevent;
 
-  if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+//  al_wait_for_event(event_queue, &event);
+  trueevent = al_get_next_event(event_queue, &event);
+  if(trueevent) {
     switch(event.keyboard.keycode) {
-      case ALLEGRO_KEY_UP:
-        return (1);
-        break;
+     case ALLEGRO_KEY_UP:
+       return (1);
+       break;
 
-      case ALLEGRO_KEY_DOWN:
-        return (2);
-        break;
+     case ALLEGRO_KEY_DOWN:
+       return (2);
+       break;
 
-      case ALLEGRO_KEY_LEFT:
-        return (3);
-        break;
+     case ALLEGRO_KEY_LEFT:
+       return (3);
+       break;
 
-      case ALLEGRO_KEY_RIGHT:
-        return (3);
-        break;
+     case ALLEGRO_KEY_RIGHT:
+       return (4);
+       break;
 
-      case ALLEGRO_KEY_ESCAPE:
-        return (-1);
-        break;
-    }
+     case ALLEGRO_KEY_ESCAPE:
+       return (-1);
+       break;
+   }
   }
   return (0);
 }
