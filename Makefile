@@ -17,4 +17,4 @@ clean:
 	@rm $(NAME)
 
 run: all
-	./$(NAME) 320 240
+	./$(NAME) 50 25
