@@ -167,7 +167,6 @@ bool Player::move(int player_input, Apples* food, Vector mapsize) {
 				if (moveHead(mapsize))
 					return false;
 			}
-			std::cout << "1: up" << std::endl;
 		break;
 		case 2:
 			if (direction != 1 && direction != 2) {
@@ -179,7 +178,6 @@ bool Player::move(int player_input, Apples* food, Vector mapsize) {
 				if (moveHead(mapsize))
 					return false;
 			}
-			std::cout << "2: down" << std::endl;
 		break;
 		case 3:
 			if (direction != 4 && direction != 3) {
@@ -191,7 +189,6 @@ bool Player::move(int player_input, Apples* food, Vector mapsize) {
 				if (moveHead(mapsize))
 					return false;
 			}
-			std::cout << "3: left" << std::endl;
 		break;
 		case 4:
 			if (direction != 3 && direction != 4) {
@@ -203,7 +200,6 @@ bool Player::move(int player_input, Apples* food, Vector mapsize) {
 				if (moveHead(mapsize))
 					return false;
 			}
-			std::cout << "4: right" << std::endl;
 		break;
 		default:
 			if (moveHead(mapsize))
