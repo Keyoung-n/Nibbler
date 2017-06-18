@@ -22,7 +22,6 @@ void Game::play() {
 	bool player_alive = true;
 	struct timeval	end;
 	struct timeval	start;
-	//double	elapsed;
 
 	while (player_alive) {
 		gettimeofday(&start, NULL);
@@ -32,11 +31,7 @@ void Game::play() {
 			food.genApple(mapsize);
 		score++;
 		gettimeofday(&end, NULL);
-		//elapsed = (end.tv_sec - start.tv_sec) * 1000.0;
-		//elapsed += (end.tv_sec - start.tv_sec) / 1000.0;
-		//speed = elapsed;
 		if ((end.tv_usec - start.tv_usec) >= 0)
 			usleep( speed - (end.tv_usec - start.tv_usec) / 1000.0);
-		//usleep(speed);
 	}
 }

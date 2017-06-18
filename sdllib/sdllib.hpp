@@ -6,7 +6,7 @@
 #include <string>
 #include <list>
 #include <iterator>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 
 class Sdllib : public DynamicGUI {
