@@ -62,7 +62,7 @@ void shutdown(void)
 void game_loop(void)
 {
     bool redraw = true;
-    //al_start_timer(timer);
+    al_start_timer(timer);
     int x = 0;
     int y = 0;
     while (!done) {
@@ -99,4 +99,5 @@ int main(int argc, char* argv[])
     init();
     game_loop();
     shutdown();
+	return (0);
 }

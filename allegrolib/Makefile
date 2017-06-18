@@ -1,4 +1,4 @@
-CC = g++
+CC = clang++
 FLAGS = -Wall -Wextra -Werror
 NAME = liballegro.so
 SRC = allegrolib.cpp
@@ -6,8 +6,8 @@ OBJ = $(SRC:.cpp=.o)
 
 all:
 	@echo "compiling liballegro..."
-	@$(CC) $(FLAGS) -c -fPIC $(SRC)
-	@$(CC) -shared -fPIC -o $(NAME) $(OBJ) `pkg-config --libs allegro-5.0 allegro_primitives-5.0`
+	clang++ -Wall -Wextra -Werror -o liballegro1.so allegrolib.cpp `pkg-config --cflags --libs allegro-5 allegro_main-5 allegro_primitives-5`
+	$(CC) -shared $(FLAGS) -o $(NAME) $(SRC) `pkg-config --cflags --libs allegro-5 allegro_primitives-5`
 
 clean:
 		@rm $(OBJ)

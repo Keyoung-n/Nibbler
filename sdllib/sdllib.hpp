@@ -17,7 +17,7 @@ class Sdllib : public DynamicGUI {
 		SDL_Texture		*tex;
 		SDL_Event		event;
 		SDL_Rect		r;
-		
+
 		Sdllib(void);
 		virtual	~Sdllib(void);
 		int		init_sdl();
@@ -31,8 +31,7 @@ class Sdllib : public DynamicGUI {
 		int		userResponse();
 		void	printPlayer(std::list<Vector> snakePoints);
 		void 	drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score);
-
-	
+		
 };
 
 #endif
