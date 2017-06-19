@@ -16,7 +16,7 @@ OBJ = $(SRC:.cpp=.o)
 $(NAME): all
 
 all:
-	$(CC) -shared $(FLAGS) -o $(NAME) $(SRC) $(SDL_ALL)
+	$(CC) -shared -fPIC $(FLAGS) -o $(NAME) $(SRC) $(SDL_ALL)
 #	$(CC) $(GDB) $(FLAGS) -c -fPIC $(SRC)
 
 link:
