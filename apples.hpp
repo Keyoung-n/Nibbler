@@ -17,16 +17,17 @@ private:
 public:
   Apples ();
   ~Apples ();
-  Apples ( Apples const & copy );
-  Apples & operator=( Apples const & copy );
-  void genApple(Vector);
-  void eatApple(Vector);
-  int Count();
+  Apples ( Apples const & );
+  Apples & operator=( Apples const &);
   std::list<Vector> getlistofApples();
-  void set_apples(std::list<Vector> new_apples);
-  void set_seed(int new_seed);
-  void set_count(int new_count);
+  bool did_food_spawn_on_player(Vector, std::list<Vector>);
+  int Count();
   int get_seed();
+  void eatApple(Vector);
+  void genApple(Vector, std::list<Vector>);
+  void set_apples(std::list<Vector>);
+  void set_count(int);
+  void set_seed(int);
 };
 
 std::ostream & operator<<(std::ostream &, Apples const &);

@@ -28,7 +28,7 @@ void Game::play() {
 		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords(), score);
 		Game_alive = snake.move(interface.getUserResponse(), &food, mapsize);
 		if (score % 100 == 0 || food.Count() == 0)
-			food.genApple(mapsize);
+			food.genApple(mapsize, snake.getplayerCords());
 		score++;
 		gettimeofday(&end, NULL);
 		if ((end.tv_usec - start.tv_usec) >= 0)

@@ -8,7 +8,29 @@ Apples::Apples() {
 Apples::~Apples() {
 }
 
-void Apples::genApple(Vector Mapsize) {
+bool Apples::did_food_spawn_on_player(Vector apple, std::list<Vector> player_cords) {
+	std::list<Vector>::iterator next;
+	std::list<Vector>::iterator current;
+
+	for (std::list<Vector>::iterator it = player_cords.begin(); it != player_cords.end(); ++it) {
+		current = it;
+		next = it;
+		next++;
+		if (next->y == current->y && current->y == apple.y) {
+			if (next->x > current->x) {
+				if (apple.x > current->x && apple.x < next->x)
+					return (true);
+			}
+			else if (next->x < current->x) {
+				if (apple.x < current->x && apple.x > next->x)
+					return (true);
+			}
+		}
+	}
+	return (false);
+}
+
+void Apples::genApple(Vector Mapsize, std::list<Vector> player_cords) {
 	Vector new_apple;
 
 	if (count != 5) {
@@ -18,6 +40,10 @@ void Apples::genApple(Vector Mapsize) {
 		new_apple.y = (rand() % Mapsize.y);
 		new_apple.x = (rand() % Mapsize.x);
 
+		if (did_food_spawn_on_player(new_apple, player_cords)) {
+			genApple(Mapsize, player_cords);
+			return;
+		}
 		apples.push_back(new_apple);
 		count++;
 	}
