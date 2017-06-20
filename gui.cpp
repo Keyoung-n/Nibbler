@@ -16,8 +16,8 @@ GUI::~GUI() {
 	dlclose(handle);
 }
 
-int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score) {
-	lib->drawFrame(mapsize, apples, playerCords, score);
+int GUI::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> GUICords, int score) {
+	lib->drawFrame(mapsize, apples, GUICords, score);
 	return (0);
 }
 
@@ -76,3 +76,27 @@ int GUI::getUserResponse() {
 	}
 	return response;
 }
+
+GUI::GUI(GUI const & copy) {
+	*this = copy;
+}
+
+GUI& GUI::operator=(GUI const & copy) {
+	if ( this != &copy ) {
+		GUI new_gui(copy);
+		set_lib(new_gui.get_lib());
+		set_handle(new_gui.get_handle());
+	}
+	return *this;
+}
+
+std::ostream & operator<<(std::ostream & o, GUI const & rhs) {
+	GUI copy(rhs);
+	o << "This lib is working";
+	return o;
+}
+
+DynamicGUI* GUI::get_lib() { return lib; }
+void* GUI::get_handle() { return handle; }
+void GUI::set_lib(DynamicGUI* new_lib) { lib = new_lib; }
+void GUI::set_handle(void* new_handle) { handle = new_handle; }
