@@ -40,3 +40,28 @@ int Apples::Count() {
 std::list<Vector> Apples::getlistofApples() {
 	return apples;
 }
+
+Apples::Apples(Apples const & copy) {
+	*this = copy;
+}
+
+Apples& Apples::operator=(Apples const & copy) {
+	if ( this != &copy ) {
+		Apples food(copy);
+		set_apples(food.getlistofApples());
+		set_count(food.Count());
+		set_seed(food.get_seed());
+	}
+	return *this;
+}
+
+void Apples::set_apples(std::list<Vector> new_apples) { apples = new_apples; }
+void Apples::set_seed(int new_seed) { seed = new_seed; }
+void Apples::set_count(int new_count) { count = new_count; }
+int Apples::get_seed() { return seed; }
+
+std::ostream & operator<<(std::ostream & o, Apples const & rhs) {
+	Apples copy(rhs);
+	o << copy.Count();
+	return o;
+}
