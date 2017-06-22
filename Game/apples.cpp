@@ -86,6 +86,7 @@ Apples& Apples::operator=(Apples const & copy) {
 void Apples::set_apples(std::list<Vector> new_apples)	{ apples = new_apples; }
 void Apples::set_seed(int new_seed)										{ seed = new_seed; }
 void Apples::set_count(int new_count)									{ count = new_count; }
+
 int Apples::get_seed() { return seed; }
 
 std::ostream & operator<<(std::ostream & o, Apples const & rhs) {
