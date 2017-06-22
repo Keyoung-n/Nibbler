@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/nfs/zfs-student-6/users/knage/projects/Nibbler/Game/GUIInterface.hpp
+vector.h
+/nfs/zfs-student-6/users/knage/projects/Nibbler/Game/vector.h
+list
+-
+
+/nfs/zfs-student-6/users/knage/projects/Nibbler/Game/vector.h
+
+/nfs/zfs-student-6/users/knage/projects/Nibbler/ncurseslib/ncurseslib.cpp
+ncurseslib.hpp
+/nfs/zfs-student-6/users/knage/projects/Nibbler/ncurseslib/ncurseslib.hpp
+
+/nfs/zfs-student-6/users/knage/projects/Nibbler/ncurseslib/ncurseslib.hpp
+../Game/GUIInterface.hpp
+/nfs/zfs-student-6/users/knage/projects/Nibbler/Game/GUIInterface.hpp
+iterator
+-
+list
+-
+ncurses.h
+-
+string
+-
+

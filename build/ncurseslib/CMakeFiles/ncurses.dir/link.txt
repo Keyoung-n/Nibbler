@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -Wall -Wextra -Werror -dynamiclib -Wl,-headerpad_max_install_names  -o ../libncurses.dylib -install_name @rpath/libncurses.dylib CMakeFiles/ncurses.dir/ncurseslib.cpp.o /usr/lib/libcurses.dylib /usr/lib/libform.dylib 
