@@ -54,7 +54,7 @@ int	Sdllib::userResponse()
 						Destroy(win, ren);
 						return (-1);
 						break;
- 
+
 						case 49:
 						return (5);
 						break;
@@ -62,7 +62,7 @@ int	Sdllib::userResponse()
 						case 50:
 						return (6);
 						break;
-	
+
 						case 51:
 						return (7);
 						break;
@@ -100,7 +100,7 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 								}
 						}
 						else if (next->y > point->y) {
-								for (int y = point->y; y != next->y; y++) 
+								for (int y = point->y; y != next->y; y++)
 								{
 										r.y = ((y + 2) << 3) + ((y + 2) << 1);
 										r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
@@ -217,3 +217,36 @@ extern "C" Sdllib *create_gl() {
 extern "C" void destroy_gl(Sdllib *lib) {
 		delete lib;
 }
+
+// Canonical stuff
+
+Sdllib::Sdllib(Sdllib const & copy) {
+	*this = copy;
+}
+
+Sdllib& Sdllib::operator=(Sdllib const & copy) {
+	if ( this != &copy ) {
+ 		Sdllib new_gui(copy);
+		set_bmp(new_gui.get_bmp());
+		set_event(new_gui.get_event());
+		set_r(new_gui.get_r());
+		set_ren(new_gui.get_ren());
+		set_tex(new_gui.get_tex());
+		set_win(new_gui.get_win());
+	}
+	return *this;
+}
+
+SDL_Event			Sdllib::get_event() { return event; }
+SDL_Rect			Sdllib::get_r() 		{ return r; }
+SDL_Renderer*	Sdllib::get_ren() 	{ return ren; }
+SDL_Surface*	Sdllib::get_bmp() 	{ return bmp; }
+SDL_Texture*	Sdllib::get_tex()	 	{ return tex; }
+SDL_Window*		Sdllib::get_win() 	{ return win; }
+
+void Sdllib::set_bmp(SDL_Surface* new_bmp) 	{ bmp = new_bmp; }
+void Sdllib::set_event(SDL_Event new_event) { event = new_event; }
+void Sdllib::set_r(SDL_Rect new_r) 					{ r = new_r; }
+void Sdllib::set_ren(SDL_Renderer* new_ren) { ren = new_ren; }
+void Sdllib::set_tex(SDL_Texture* new_tex) 	{ tex = new_tex; }
+void Sdllib::set_win(SDL_Window* new_win) 	{ win = new_win; }

@@ -8,10 +8,6 @@ Game::Game(int x, int y) {
 	mapsize.y = y;
 }
 
-Game::Game(Game const & copy) {
-	*this = copy;
-}
-
 Game::~Game ( void ) {
 	std::cout << "Your score was " << score << '\n';
 }
@@ -36,6 +32,12 @@ void Game::play() {
 	}
 }
 
+// Canonical stuff
+
+Game::Game(Game const & copy) {
+	*this = copy;
+}
+
 Game& Game::operator=(Game const & copy) {
 	if ( this != &copy ) {
 		Game new_game(copy);
@@ -54,13 +56,14 @@ std::ostream & operator<<(std::ostream & o, Game const & rhs) {
 	return o;
 }
 
-Apples Game::get_food() { return food; }
-GUI Game::get_interface() { return interface; }
-Player Game::get_snake() { return snake; }
-Vector Game::get_mapsize() { return mapsize; }
-int Game::get_score() { return score; }
-void Game::set_food(Apples new_food) { food = new_food; }
-void Game::set_interface(GUI new_interface) { interface = new_interface; }
-void Game::set_mapsize(Vector new_mapsize) { mapsize = new_mapsize; }
-void Game::set_score(int new_score) { score = new_score; }
-void Game::set_snake(Player new_snake) { snake = new_snake; }
+Apples Game::get_food() 		{ return food; }
+GUI Game::get_interface() 	{ return interface; }
+Player Game::get_snake() 		{ return snake; }
+Vector Game::get_mapsize()	{ return mapsize; }
+int Game::get_score() 			{ return score; }
+
+void Game::set_food(Apples new_food)				{ food = new_food; }
+void Game::set_interface(GUI new_interface)	{ interface = new_interface; }
+void Game::set_mapsize(Vector new_mapsize)	{ mapsize = new_mapsize; }
+void Game::set_score(int new_score)					{ score = new_score; }
+void Game::set_snake(Player new_snake)			{ snake = new_snake; }
