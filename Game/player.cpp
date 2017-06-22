@@ -15,10 +15,10 @@ Player::Player(Vector mapsize) {
 	tail.x = head.x - 2;
 	tail.y = head.y;
 
-	//std::cout << head.x << "|" << head.y << '\n';
 	length = 3;
 	direction = 4;
 }
+
 Player::~Player() {}
 
 std::list<Vector> Player::getplayerCords() {

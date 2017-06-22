@@ -13,18 +13,19 @@ private:
   DynamicGUI* lib;
   void (*destroy)(DynamicGUI*);
   void* handle;
+
 public:
   GUI();
   ~GUI();
   GUI(GUI const & copy);
   GUI& operator=(GUI const &);
+  DynamicGUI* get_lib();
   int drawFrame(Vector, std::list<Vector>, std::list<Vector>, int);
   int getUserResponse();
-  void switch_lib(int);
-  DynamicGUI* get_lib();
-  void* get_handle();
-  void set_lib(DynamicGUI* new_lib);
   void set_handle(void* handle);
+  void set_lib(DynamicGUI* new_lib);
+  void switch_lib(int);
+  void* get_handle();
 };
 
 std::ostream & operator<<(std::ostream & o, GUI const & rhs);
