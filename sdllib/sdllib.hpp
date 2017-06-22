@@ -1,7 +1,7 @@
 #ifndef SDLLIB_HPP
 # define SDLLIB_HPP
 
-#include "../GUIInterface.hpp"
+#include "../Game/GUIInterface.hpp"
 #include <iostream>
 #include <string>
 #include <list>
@@ -31,7 +31,7 @@ class Sdllib : public DynamicGUI {
 		int		userResponse();
 		void	printPlayer(std::list<Vector> snakePoints);
 		void 	drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vector> playerCords, int score);
-		
+
 };
 
 #endif

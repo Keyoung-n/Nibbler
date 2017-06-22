@@ -1,7 +1,7 @@
 #ifndef NCURSESLIB_HPP
 #define NCURSESLIB_HPP
 
-#include "../GUIInterface.hpp"
+#include "../Game/GUIInterface.hpp"
 #include <iterator>
 #include <list>
 #include <ncurses.h>
