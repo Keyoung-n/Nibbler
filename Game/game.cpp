@@ -15,15 +15,15 @@ Game::~Game ( void ) {
 void Game::play() {
 	score = 0;
 	int	speed = 60000;
-	bool Game_alive = true;
+	bool game_alive = true;
 	struct timeval	end;
 	struct timeval	start;
 	Player snake(mapsize);
 
-	while (Game_alive) {
+	while (game_alive) {
 		gettimeofday(&start, NULL);
 		interface.drawFrame(mapsize, food.getlistofApples(), snake.getplayerCords(), score);
-		Game_alive = snake.move(interface.getUserResponse(), &food, mapsize);
+		game_alive = snake.move(interface.getUserResponse(), &food, mapsize);
 		if (score % 100 == 0 || food.Count() == 0)
 			food.genApple(mapsize, snake.getplayerCords());
 		score++;
