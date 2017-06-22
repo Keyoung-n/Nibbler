@@ -78,6 +78,8 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 		r.h = 10;
 		r.w = 10;
 		std::list<Vector>::iterator next;
+
+		SDL_SetRenderDrawColor(ren, 57, 73, 171, 255);
 		for (std::list<Vector>::iterator point = snakePoints.begin(); point != snakePoints.end(); ++point) {
 				next = point;
 				next++;
@@ -117,6 +119,7 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 						}
 				}
 				else {
+						SDL_SetRenderDrawColor(ren, 0, 150, 136, 255);
 						r.y = ((point->y + 1) << 3) + ((point->y + 1) << 1);
 						r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
 						SDL_RenderFillRect(ren, &r);
@@ -134,7 +137,9 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 		frame_rec.w = 1;
 
 		RenderClear(ren);
+		SDL_SetRenderDrawColor(ren, 97, 97, 97, 255);
 		for (int i = 0; i != x + 1; i++) {
+				SDL_SetRenderDrawColor(ren, 79, 195, 247, 255);
 				frame_rec.y = 0;
 				frame_rec.x = i;
 				SDL_RenderFillRect(ren, &frame_rec);
@@ -151,6 +156,7 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 				SDL_RenderFillRect(ren, &frame_rec);
 		}
 		for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple) {
+				SDL_SetRenderDrawColor(ren, 244, 67, 54, 255);
 				food_rec.h = 10;
 				food_rec.w = 10;
 				food_rec.y = ((apple->y + 1) << 3) + ((apple->y + 1) << 1);
@@ -158,6 +164,7 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 				SDL_RenderFillRect(ren, &food_rec);
 		}
 		printPlayer(playerCords);
+		SDL_SetRenderDrawColor(ren, 55, 71, 79, 255);
 		RenderPresent(ren);
 }
 
