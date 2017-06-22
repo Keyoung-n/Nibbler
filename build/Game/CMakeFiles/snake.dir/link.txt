@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wall -Wextra -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/snake.dir/main.cpp.o CMakeFiles/snake.dir/apples.cpp.o CMakeFiles/snake.dir/player.cpp.o CMakeFiles/snake.dir/game.cpp.o CMakeFiles/snake.dir/gui.cpp.o  -o ../snake 

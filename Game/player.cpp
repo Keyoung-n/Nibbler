@@ -9,6 +9,16 @@ Player::Player() {
 	direction = 4;
 }
 
+Player::Player(Vector mapsize) {
+	head.x = mapsize.x / 2;
+	head.y = mapsize.y / 2;
+	tail.x = head.x - 2;
+	tail.y = head.y;
+
+	//std::cout << head.x << "|" << head.y << '\n';
+	length = 3;
+	direction = 4;
+}
 Player::~Player() {}
 
 std::list<Vector> Player::getplayerCords() {

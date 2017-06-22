@@ -14,7 +14,6 @@ class Game {
 private:
   Apples food;
   GUI interface;
-  Player snake;
   Vector mapsize;
   int score;
 
@@ -26,7 +25,6 @@ public:
   ~Game ( void );
   Apples get_food();
   GUI get_interface();
-  Player get_snake();
   Vector get_mapsize();
   int get_score();
   void play();
@@ -34,7 +32,6 @@ public:
   void set_interface(GUI);
   void set_mapsize(Vector);
   void set_score(int);
-  void set_snake(Player);
 };
 
 std::ostream & operator<<(std::ostream & o, Game const & rhs);

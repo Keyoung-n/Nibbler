@@ -18,6 +18,7 @@ void Game::play() {
 	bool Game_alive = true;
 	struct timeval	end;
 	struct timeval	start;
+	Player snake(mapsize);
 
 	while (Game_alive) {
 		gettimeofday(&start, NULL);
@@ -45,7 +46,6 @@ Game& Game::operator=(Game const & copy) {
 		set_interface(new_game.get_interface());
 		set_mapsize(new_game.get_mapsize());
 		set_score(new_game.get_score());
-		set_snake(new_game.get_snake());
 	}
 	return *this;
 }
@@ -58,7 +58,6 @@ std::ostream & operator<<(std::ostream & o, Game const & rhs) {
 
 Apples Game::get_food() 		{ return food; }
 GUI Game::get_interface() 	{ return interface; }
-Player Game::get_snake() 		{ return snake; }
 Vector Game::get_mapsize()	{ return mapsize; }
 int Game::get_score() 			{ return score; }
 
@@ -66,4 +65,3 @@ void Game::set_food(Apples new_food)				{ food = new_food; }
 void Game::set_interface(GUI new_interface)	{ interface = new_interface; }
 void Game::set_mapsize(Vector new_mapsize)	{ mapsize = new_mapsize; }
 void Game::set_score(int new_score)					{ score = new_score; }
-void Game::set_snake(Player new_snake)			{ snake = new_snake; }

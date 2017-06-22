@@ -1,6 +1,7 @@
-Install script
-bug ncurses to stdl
+bug ncurses to SDL
+3rd lib
 Canonical classes (other lib)
+-----------------------------
 STDLlib colors
 Scores (SDL and other libs)
 Game pausing
