@@ -11,8 +11,7 @@ link_directories(${SDL2_LIBRARY_DIRS})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 
-set(SOURCE_FILES
-      sdllib.cpp sdllib.hpp)
+set(SOURCE_FILES sdllib.cpp sdllib.hpp)
 
 ADD_LIBRARY(SDL SHARED ${SOURCE_FILES})
 target_link_libraries(SDL ${SDL2_LIBRARIES})
