@@ -5,7 +5,7 @@ bool checkMapSize(int x, int y) {
 		std::cout << "Map too small" << '\n';
 		return false;
 	}
-	else if ( x > 1000 || y > 500 ){
+	else if ( x > 60 || y > 45 ){
 		std::cout << "Map too big" << '\n';
 		return false;
 	}

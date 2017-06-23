@@ -12,6 +12,7 @@ Sdllib::Sdllib(void)
 Sdllib::~Sdllib(void)
 {
 		Destroy(win, ren);
+		SDL_Quit();
 }
 
 int	Sdllib::init_sdl()
@@ -54,7 +55,7 @@ int	Sdllib::userResponse()
 						Destroy(win, ren);
 						return (-1);
 						break;
- 
+
 						case 49:
 						return (5);
 						break;
@@ -62,7 +63,7 @@ int	Sdllib::userResponse()
 						case 50:
 						return (6);
 						break;
-	
+
 						case 51:
 						return (7);
 						break;
@@ -78,6 +79,8 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 		r.h = 10;
 		r.w = 10;
 		std::list<Vector>::iterator next;
+
+		SDL_SetRenderDrawColor(ren, 57, 73, 171, 255);
 		for (std::list<Vector>::iterator point = snakePoints.begin(); point != snakePoints.end(); ++point) {
 				next = point;
 				next++;
@@ -100,7 +103,7 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 								}
 						}
 						else if (next->y > point->y) {
-								for (int y = point->y; y != next->y; y++) 
+								for (int y = point->y; y != next->y; y++)
 								{
 										r.y = ((y + 2) << 3) + ((y + 2) << 1);
 										r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
@@ -117,6 +120,7 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 						}
 				}
 				else {
+						SDL_SetRenderDrawColor(ren, 0, 150, 136, 255);
 						r.y = ((point->y + 1) << 3) + ((point->y + 1) << 1);
 						r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
 						SDL_RenderFillRect(ren, &r);
@@ -134,7 +138,9 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 		frame_rec.w = 1;
 
 		RenderClear(ren);
+		SDL_SetRenderDrawColor(ren, 97, 97, 97, 255);
 		for (int i = 0; i != x + 1; i++) {
+				SDL_SetRenderDrawColor(ren, 79, 195, 247, 255);
 				frame_rec.y = 0;
 				frame_rec.x = i;
 				SDL_RenderFillRect(ren, &frame_rec);
@@ -151,6 +157,7 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 				SDL_RenderFillRect(ren, &frame_rec);
 		}
 		for (std::list<Vector>::iterator apple = apples.begin(); apple != apples.end() ; ++apple) {
+				SDL_SetRenderDrawColor(ren, 244, 67, 54, 255);
 				food_rec.h = 10;
 				food_rec.w = 10;
 				food_rec.y = ((apple->y + 1) << 3) + ((apple->y + 1) << 1);
@@ -158,6 +165,7 @@ void Sdllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vecto
 				SDL_RenderFillRect(ren, &food_rec);
 		}
 		printPlayer(playerCords);
+		SDL_SetRenderDrawColor(ren, 55, 71, 79, 255);
 		RenderPresent(ren);
 }
 
@@ -217,3 +225,36 @@ extern "C" Sdllib *create_gl() {
 extern "C" void destroy_gl(Sdllib *lib) {
 		delete lib;
 }
+
+// Canonical stuff
+
+Sdllib::Sdllib(Sdllib const & copy) {
+	*this = copy;
+}
+
+Sdllib& Sdllib::operator=(Sdllib const & copy) {
+	if ( this != &copy ) {
+ 		Sdllib new_gui(copy);
+		set_bmp(new_gui.get_bmp());
+		set_event(new_gui.get_event());
+		set_r(new_gui.get_r());
+		set_ren(new_gui.get_ren());
+		set_tex(new_gui.get_tex());
+		set_win(new_gui.get_win());
+	}
+	return *this;
+}
+
+SDL_Event			Sdllib::get_event() { return event; }
+SDL_Rect			Sdllib::get_r() 		{ return r; }
+SDL_Renderer*	Sdllib::get_ren() 	{ return ren; }
+SDL_Surface*	Sdllib::get_bmp() 	{ return bmp; }
+SDL_Texture*	Sdllib::get_tex()	 	{ return tex; }
+SDL_Window*		Sdllib::get_win() 	{ return win; }
+
+void Sdllib::set_bmp(SDL_Surface* new_bmp) 	{ bmp = new_bmp; }
+void Sdllib::set_event(SDL_Event new_event) { event = new_event; }
+void Sdllib::set_r(SDL_Rect new_r) 					{ r = new_r; }
+void Sdllib::set_ren(SDL_Renderer* new_ren) { ren = new_ren; }
+void Sdllib::set_tex(SDL_Texture* new_tex) 	{ tex = new_tex; }
+void Sdllib::set_win(SDL_Window* new_win) 	{ win = new_win; }

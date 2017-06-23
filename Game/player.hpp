@@ -17,6 +17,7 @@ private:
 public:
   Player ();
   ~Player ();
+  Player(Vector);
   Player(Player const & copy);
   Player& operator=(Player const &);
   std::list<Vector> get_corners();

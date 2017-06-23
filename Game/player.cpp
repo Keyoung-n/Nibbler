@@ -9,6 +9,16 @@ Player::Player() {
 	direction = 4;
 }
 
+Player::Player(Vector mapsize) {
+	head.x = mapsize.x / 2;
+	head.y = mapsize.y / 2;
+	tail.x = head.x - 2;
+	tail.y = head.y;
+
+	length = 3;
+	direction = 4;
+}
+
 Player::~Player() {}
 
 std::list<Vector> Player::getplayerCords() {
@@ -215,6 +225,8 @@ bool Player::move(int player_input, Apples* food, Vector mapsize) {
 	return true;
 }
 
+// Canonical stuff
+
 Player::Player(Player const & copy) {
 	*this = copy;
 }
@@ -239,13 +251,14 @@ std::ostream & operator<<(std::ostream & o, Player const & rhs) {
 	return o;
 }
 
-Vector Player::get_head() { return head; }
-Vector Player::get_tail() { return tail; }
+Vector Player::get_head() 							{ return head; }
+Vector Player::get_tail() 							{ return tail; }
 std::list<Vector> Player::get_corners() { return corners; }
-int Player::get_direction() { return direction; }
-int Player::get_length() { return length; }
+int Player::get_direction() 						{ return direction; }
+int Player::get_length() 								{ return length; }
+
 void Player::set_corners(std::list<Vector> new_corners) { corners = new_corners; }
-void Player::set_direction(int new_direction) { direction = new_direction; }
-void Player::set_head(Vector new_head) { head = new_head; }
-void Player::set_length(int new_length) { length = new_length; }
-void Player::set_tail(Vector new_tail) { tail = new_tail; }
+void Player::set_direction(int new_direction) 					{ direction = new_direction; }
+void Player::set_head(Vector new_head) 									{ head = new_head; }
+void Player::set_length(int new_length) 								{ length = new_length; }
+void Player::set_tail(Vector new_tail) 									{ tail = new_tail; }
