@@ -12,6 +12,7 @@ Sdllib::Sdllib(void)
 Sdllib::~Sdllib(void)
 {
 		Destroy(win, ren);
+		SDL_Quit();
 }
 
 int	Sdllib::init_sdl()

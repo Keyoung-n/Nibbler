@@ -40,6 +40,7 @@ void GUI::switch_lib(int new_lib) {
 			std::cout << "Could not load sfml lib. :(" << std::endl;
 			exit(0);
 		}
+		std::cout << "switched" << '\n';
 		create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
 		destroy = (void (*)(DynamicGUI*))dlsym(handle, "destroy_gl");
 		lib = create();

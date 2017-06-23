@@ -16,7 +16,8 @@ class Sfmllib : public DynamicGUI {
 		sf::RectangleShape	body;
 		sf::RectangleShape	food;
 		sf::RectangleShape	frame;
-		sf::RenderWindow	window;
+		sf::RenderWindow		window;
+
 	public:
 		Sfmllib(void);
 		virtual ~Sfmllib(void);

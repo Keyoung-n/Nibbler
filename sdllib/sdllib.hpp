@@ -9,7 +9,7 @@
 #include <SDL.h>
 
 class Sdllib : public DynamicGUI {
-	public:
+	private:
 		SDL_Window		*win;
 		SDL_Renderer	*ren;
 		SDL_Surface		*bmp;
@@ -17,6 +17,7 @@ class Sdllib : public DynamicGUI {
 		SDL_Event		event;
 		SDL_Rect		r;
 
+	public:
 		Sdllib(void);
 		virtual	~Sdllib(void);
 		Sdllib(Sdllib const & copy);
