@@ -64,13 +64,9 @@ endif()
 set(FIND_SFML_PATHS
     ${SFML_ROOT}
     $ENV{SFML_ROOT}
-    ~/.brew/Cellar/sfml/2.4.2
-    ~/.brew/Cellar/sfml/2.4.2/lib
-    ~/.brew/Cellar
-    ~/.brew/Cellar/sfml/2.4.2/include/SFML/
     ~/Library/Frameworks
     /Library/Frameworks
-    /usr/local
+    /nfs/zfs-student-6/users/knage/.brew
     /usr
     /sw
     /opt/local
