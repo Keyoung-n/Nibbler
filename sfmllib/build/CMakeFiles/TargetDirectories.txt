@@ -1,9 +1,0 @@
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/install/strip.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/install.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/list_install_components.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/package_source.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/rebuild_cache.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/edit_cache.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/package.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/install/local.dir
-/nfs/zfs-student-6/users/knage/projects/Nibbler/sfmllib/build/CMakeFiles/myproject.dir
