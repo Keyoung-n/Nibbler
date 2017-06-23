@@ -6,7 +6,7 @@ Sfmllib::Sfmllib(void) : window(sf::VideoMode(640, 480), "snake")
 
 Sfmllib::~Sfmllib(void)
 {
-	
+
 }
 
 int		Sfmllib::userResponse()
@@ -50,7 +50,7 @@ void	Sfmllib::printPlayer(std::list<Vector> snakePoints)
 	for (std::list<Vector>::iterator point = snakePoints.begin(); point != snakePoints.end(); ++point) {
 			next = point;
 			next++;
-				
+
 		if (next != snakePoints.end()) {
 					if (next->x > point->x) {
 							for (int x = point->x; x != next->x; x++)
@@ -67,7 +67,7 @@ void	Sfmllib::printPlayer(std::list<Vector> snakePoints)
 							}
 					}
 					else if (next->y > point->y) {
-							for (int y = point->y; y != next->y; y++) 
+							for (int y = point->y; y != next->y; y++)
 							{
 									body.setPosition(((point->x + 1) << 3) + ((point->x + 1) << 1),((y + 2) << 3) + ((y + 2) << 1));
 									window.draw(body);
@@ -95,7 +95,7 @@ void 	Sfmllib::drawFrame(Vector mapsize, std::list<Vector> apples, std::list<Vec
 		frame.setSize(sf::Vector2f(7,7));
 		frame.setOutlineColor(sf::Color::Blue);
 		frame.setOutlineThickness(2);
-	
+
 		food.setSize(sf::Vector2f(10,10));
 		food.setOutlineColor(sf::Color::Green);
 		food.setOutlineThickness(2);
@@ -130,3 +130,30 @@ extern "C" Sfmllib *create_gl() {
 extern "C" void destroy_gl(Sfmllib *lib) {
 		delete lib;
 }
+
+// Canonical stuff
+
+Sfmllib::Sfmllib(Sfmllib const & copy) {
+	*this = copy;
+}
+
+Sfmllib& Sfmllib::operator=(Sfmllib const & copy) {
+	if ( this != &copy ) {
+ 		Sfmllib new_gui(copy);
+		set_body(new_gui.get_body());
+		set_food(new_gui.get_food());
+		set_frame(new_gui.get_frame());
+		set_head(new_gui.get_head());
+	}
+	return *this;
+}
+
+sf::RectangleShape	Sfmllib::get_body() 		{ return body; }
+sf::RectangleShape	Sfmllib::get_food() 		{ return food; }
+sf::RectangleShape	Sfmllib::get_frame()		{ return frame; }
+sf::RectangleShape	Sfmllib::get_head()			{ return head; }
+
+void Sfmllib::set_body(sf::RectangleShape new_body)		{ body = new_body; }
+void Sfmllib::set_food(sf::RectangleShape new_food)		{ food = new_food; }
+void Sfmllib::set_frame(sf::RectangleShape new_frame)	{ frame = new_frame; }
+void Sfmllib::set_head(sf::RectangleShape new_head)		{ head = new_head; }
