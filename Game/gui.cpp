@@ -1,9 +1,9 @@
 #include "gui.hpp"
 
 GUI::GUI() {
-	handle = dlopen("./libncurses.dylib", RTLD_LAZY);
+	handle = dlopen("./libSFML.dylib", RTLD_LAZY);
 	if (dlerror() != NULL)  {
-		std::cout << "Couldn't load ncurses lib. :'(" << '\n';
+		std::cout << "Could not load sfml lib. :(" << std::endl;
 		exit(0);
 	}
 	create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
@@ -40,7 +40,6 @@ void GUI::switch_lib(int new_lib) {
 			std::cout << "Could not load sfml lib. :(" << std::endl;
 			exit(0);
 		}
-		std::cout << "switched" << '\n';
 		create = (DynamicGUI* (*)())dlsym(handle, "create_gl");
 		destroy = (void (*)(DynamicGUI*))dlsym(handle, "destroy_gl");
 		lib = create();
@@ -62,6 +61,7 @@ void GUI::switch_lib(int new_lib) {
 }
 
 int GUI::getUserResponse() {
+
 	int response = lib->userResponse();
 	if (response == -1) {
 		destroy(lib);
