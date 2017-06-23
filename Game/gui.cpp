@@ -35,7 +35,7 @@ void GUI::switch_lib(int new_lib) {
 		lib = create();
 	}
 	else if (new_lib == 6) {
-		handle = dlopen("./sfmllib/lib2.so", RTLD_LAZY);
+		handle = dlopen("./libSFML.dylib", RTLD_LAZY);
 		if (dlerror() != NULL) {
 			std::cout << "Could not load sfml lib. :(" << std::endl;
 			exit(0);
