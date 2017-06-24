@@ -3,7 +3,7 @@ project(Snake-executable)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ldl -Wall -Wextra -Werror")
 set(SOURCE_FILES
         main.cpp
         apples.cpp apples.hpp

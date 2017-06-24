@@ -95,7 +95,7 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 								}
 						}
 						else if (next->x < point->x) {
-								for (int x = next->x; x != point->x; x++)
+								for (int x = next->x; x != point->x + 1; x++)
 								{
 										r.y = ((point->y + 1) << 3) + ((point->y + 1) << 1);
 										r.x = ((x + 1) << 3) + ((x + 1) << 1);
@@ -105,13 +105,13 @@ void Sdllib::printPlayer(std::list<Vector> snakePoints) {
 						else if (next->y > point->y) {
 								for (int y = point->y; y != next->y; y++)
 								{
-										r.y = ((y + 2) << 3) + ((y + 2) << 1);
+										r.y = ((y + 1) << 3) + ((y + 1) << 1);
 										r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);
 										SDL_RenderFillRect(ren, &r);
 								}
 						}
 						else if (next->y < point->y) {
-								for (int y = next->y; y != point->y; y++)
+								for (int y = next->y; y != point->y + 1; y++)
 								{
 										r.y = ((y + 1) << 3) + ((y + 1) << 1);
 										r.x = ((point->x + 1) << 3) + ((point->x + 1) << 1);

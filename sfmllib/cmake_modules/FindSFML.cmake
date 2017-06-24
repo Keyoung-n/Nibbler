@@ -66,7 +66,15 @@ set(FIND_SFML_PATHS
     $ENV{SFML_ROOT}
     ~/Library/Frameworks
     /Library/Frameworks
+    /usr/local
+    /usr
+    /sw
+    /opt/local
+    /opt/csw
+    ~/Library/Frameworks
+    /Library/Frameworks
     /nfs/zfs-student-6/users/knage/.brew
+    /nfs/zfs-student-6/users/shulley/.brew
     /usr
     /sw
     /opt/local
