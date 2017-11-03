@@ -1,3 +1,3 @@
 # Nibbler
 
-A snake game build with 3 dynamic gui libraries :D
+A snake game build with 3 opengl gui libraries :D
